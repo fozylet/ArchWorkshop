@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("SpartanHotels.UX")]
+[assembly: AssemblyTitle("SpartanHotels.Ux")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Microsoft")]
-[assembly: AssemblyProduct("SpartanHotels.UX")]
+[assembly: AssemblyProduct("SpartanHotels.Ux")]
 [assembly: AssemblyCopyright("Copyright © Microsoft 2013")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("692bf278-b68e-497d-9bc4-3176b247da47")]
+[assembly: Guid("4952dc50-7ca6-4ff4-bbf2-119a76d52567")]
 
 // Version information for an assembly consists of the following four values:
 //
