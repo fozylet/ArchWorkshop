@@ -7,8 +7,8 @@
     <ProjectGuid>{0A7D8569-93D2-41ED-848C-A8F3E4177C32}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SpartanHotels.Repository</RootNamespace>
-    <AssemblyName>SpartanHotels.Repository</AssemblyName>
+    <RootNamespace>SpartanHotels.Repository.Worker</RootNamespace>
+    <AssemblyName>SpartanHotels.Repository.Worker</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
