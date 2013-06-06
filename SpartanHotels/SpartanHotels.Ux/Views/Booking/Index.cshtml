@@ -14,21 +14,22 @@
     <caption>Available Rooms</caption>
     <thead>
         <tr>
-            <th>Room ID</th><th></th>
+            <th>Room ID</th>
             <th>Room Type</th>
-            <th>Available</th><th></th>
-            <th>Rate</th><th></th>
+            <th>Available</th>
+            <th>Book</th>
+            <th>Rate</th><th></th><th></th>
         </tr>
     </thead>
     <tbody id="rooms" data-bind="foreach: Availability">
         <tr>
             <td data-bind="text: Room.Id"></td>
-            <td><input type="hidden" data-bind="value: Room.Id, attr: { name:'RequestedRooms[' + $index() + '].RequestedRoom.Id' }" /></td>
             <td data-bind="text: Room.Title"></td>
             <td data-bind="text: AvailableCount"></td>
-            <td><input type="text" value="0" data-bind="attr: { name: 'RequestedRooms[' + $index() + '].RoomCount' }" /></td>
+            <td><input type="text" size="1" value="0" data-bind="attr: { name: 'RequestedRooms[' + $index() + '].RoomCount' }" /></td>
             <td data-bind="text: Room.Rate"></td>
             <td><input type="hidden" value="0" data-bind="value: Room.Rate, attr: { name: 'RequestedRooms[' + $index() + '].RequestedRoom.Rate' }" /></td>
+            <td><input type="hidden" data-bind="value: Room.Id, attr: { name: 'RequestedRooms[' + $index() + '].RequestedRoom.Id' }" /></td>
         </tr>
     </tbody>
 </table>
@@ -57,7 +58,7 @@
             @Html.EditorFor(model => model.Guest.EMailAddress)
             @Html.ValidationMessageFor(model => model.Guest.EMailAddress)
         </div>
-        <input type="submit" value="Book" />
+        <input class="green" type="submit" value="Book" />
     </fieldset>
 }
 </div>

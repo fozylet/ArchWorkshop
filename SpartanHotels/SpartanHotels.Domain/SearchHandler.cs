@@ -16,8 +16,8 @@ namespace SpartanHotels.Domain
 
         public AvailabilityResponse Get(AvailabilityRequest request)
         {
-            return reader.GetAvailableRoomList(request);
-            //return Dummy();
+            //return reader.GetAvailableRoomList(request);
+            return Dummy();
         }
 
         private AvailabilityResponse Dummy()

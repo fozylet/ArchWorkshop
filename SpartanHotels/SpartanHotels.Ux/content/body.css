@@ -1,6 +1,5 @@
 body {
-    padding-top: 60px;
-    padding-bottom: 40px;
+    margin:0;padding:0;font-family:'Museo Sans For Dell', 'Trebuchet MS', Arial;background-color:#e0e0e0;
 }
 fieldset {
     float:left;
@@ -48,4 +47,141 @@ td, th {
 th, td {
   border-bottom: 1px solid #999;
   width: 25%;
+}
+
+
+
+.display-label,
+.editor-label
+{
+    margin: 1em 0 0 0;
+}
+.display-field,
+.editor-field
+{
+    margin:0.5em 0 0 0;
+}
+.text-box
+{
+    background: white;
+    border: 1px double #DDD;
+    border-radius: 5px;
+    box-shadow: 0 0 5px #333;
+    color: #666;
+    float: left;
+    padding: 5px 10px;
+    width: 165px;
+    outline: none;
+}
+.text-box.multi-line
+{
+    height: 6.5em;
+}
+.tri-state
+{
+    width: 6em;
+}
+input[type=submit] {
+    margin-top:12px;
+    border:2px groove #7c93ba;
+    cursor:pointer;
+    padding: 5px 25px;
+    background-color:#6b6dbb;
+    background: -webkit-gradient(linear, left top, left bottom, from(#88add7), to(#6b6dbb));
+    background: -webkit-linear-gradient(top, #88add7, #6b6dbb);
+    background: -moz-linear-gradient(top, #88add7, #6b6dbb);
+    background: -o-linear-gradient(top, #88add7, #6b6dbb);
+    background: linear-gradient(top, #88add7, #6b6dbb);
+    /*style to the text inside the button*/
+    font-family:Andika, Arial, sans-serif;
+    color:#fff;
+    font-size:1.1em;
+    letter-spacing:.1em;
+    font-variant:small-caps;
+    /*give the corners a small curve*/
+    -webkit-border-radius: 0 15px 15px 0;
+    -moz-border-radius: 0 15px 15px 0;
+    border-radius: 0 15px 15px 0;
+    /*add a drop shadow to the button*/
+    -webkit-box-shadow: rgba(0, 0, 0, .75) 0 2px 6px;
+    -moz-box-shadow: rgba(0, 0, 0, .75) 0 2px 6px;
+    box-shadow: rgba(0, 0, 0, .75) 0 2px 6px;
+}
+input[type=submit]:hover, input[type=submit]:focus {
+    color:#edebda;
+    -webkit-box-shadow: rgba(0, 0, 0, .25) 0 1px 0px;
+    -moz-box-shadow: rgba(0, 0, 0, .25) 0 1px 0px;
+    box-shadow: rgba(0, 0, 0, .25) 0 1px 0px;
+}
+input[type=submit].green {
+    cursor: pointer;
+    padding: 5px 25px;
+    background: #35b128;
+    border: 1px solid #33842a;
+    /*give the button curved corners, alter the size as required*/
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    /*give the button a drop shadow*/
+    -webkit-box-shadow: 0 0 4px rgba(0,0,0, .75);
+    -moz-box-shadow: 0 0 4px rgba(0,0,0, .75);
+    box-shadow: 0 0 4px rgba(0,0,0, .75);
+    /*style the text*/
+    color: #f3f3f3;
+    font-size: 1.1em;
+}
+input[type=submit].green:hover, input[type=submit].green:focus {
+    background-color: #399630;
+    /*reduce the drop shadow size to give a pushed button effect*/
+    -webkit-box-shadow: 0 0 1px rgba(0,0,0, .75);
+    -moz-box-shadow: 0 0 1px rgba(0,0,0, .75);
+    box-shadow: 0 0 1px rgba(0,0,0, .75);
+}
+.navigation {
+  background: url(images/navigation.png) top left repeat-x;
+  height: 134px;
+  overflow: auto;
+  display: block;
+  float: left;
+  width: 100%;
+}
+.navigation * {
+  padding:0;
+  margin:0;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  text-transform: uppercase;
+}
+.navigation ul {
+  display: block;
+  float: left;
+  padding: 10px 0 0 0;
+  margin: 37px 0 0 20px;
+}
+.navigation ul li {
+  list-style: none;
+  float: left;
+  margin: 0 0 0 5px;
+}
+.navigation ul li a {
+  background: url(images/nav_right.png) top right no-repeat;
+  display: block;
+  padding: 0 13px 0 0;
+  color: #578ba0;
+  text-decoration: none
+}
+.navigation ul li.selected a,
+.navigation ul li.hover a {
+  background: url(images/nav_selected_right.png) top right no-repeat;
+  color: #578ba0;
+}
+
+.navigation ul li a span {
+  background: url(images/nav_left.png) top left no-repeat;
+  display: block;
+  padding: 15px 10px 10px 23px;
+}
+.navigation ul li.selected a span,
+.navigation ul li.hover a span {
+  background: url(images/nav_selected_left.png) top left no-repeat;
 }

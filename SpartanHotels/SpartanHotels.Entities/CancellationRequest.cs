@@ -6,15 +6,16 @@ namespace SpartanHotels.Entities
 {
     public class CancellationRequest
     {
-        [RequiredIfEmpty("BookingNumber")]
+        [RequiredIf("BookingNumber", "", ErrorMessage = "Either Booking# or Confirmation# is required")]
         [Display(Name = "Confirmation #")]
         public string ConfirmationNumber { get; set; }
 
-        [RequiredIfEmpty("ConfirmationNumber")]
+        [RequiredIf("ConfirmationNumber", "", ErrorMessage = "Either Booking# or Confirmation# is required")]
         [Display(Name = "Booking #")]
         public string BookingNumber { get; set; }
 
         [Required]
+        [Display(Name = "Last Name")]
         public string LastName { get; set; }
     }
 }

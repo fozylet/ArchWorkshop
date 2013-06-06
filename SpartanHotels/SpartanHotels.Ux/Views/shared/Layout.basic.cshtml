@@ -9,12 +9,21 @@
         @RenderSection("head", required: false)
     </head>
     <body>
+        <div class="navigation">
+          <ul>
+            <li><a href="/"><span>Availability</span></a></li>
+            <li><a href="/bookingstatus"><span>Booking Status</span></a></li>
+            <li><a href="/cancellation"><span>Cancellation</span></a></li>
+          </ul>
+        </div>
         <div class="container">
             @Html.Partial("_validationSummary")
             @if (IsSectionDefined("Left"))
             {
                 <div id="left">@RenderSection("Left", required: false)</div><div id="right">@RenderBody()</div>
-            } else {
+            }
+            else
+            {
                 @RenderBody()
             }
             <footer>
@@ -22,6 +31,7 @@
                 <p>&copy; @System.DateTime.Now.ToString("yyyy"). Spartan Inc.</p>
             </footer> 
         </div>
+        <div id="status"></div>
          @Html.Partial("_scripts")
          @RenderSection("Scripts", required: false)
     </body>
