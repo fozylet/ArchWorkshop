@@ -1,19 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
   <!-- EF Runtime content -->
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="SpartanHotelsModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="SpartanHotelsModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
         <EntityContainer Name="SpartanHotelsModelStoreContainer">
-          <EntitySet Name="BookingStatus" EntityType="SpartanHotelsModel.Store.BookingStatus" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Customer" EntityType="SpartanHotelsModel.Store.Customer" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Hotel" EntityType="SpartanHotelsModel.Store.Hotel" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="HotelRooms" EntityType="SpartanHotelsModel.Store.HotelRooms" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Policy" EntityType="SpartanHotelsModel.Store.Policy" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Reservation" EntityType="SpartanHotelsModel.Store.Reservation" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="RoomType" EntityType="SpartanHotelsModel.Store.RoomType" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="sysdiagrams" EntityType="SpartanHotelsModel.Store.sysdiagrams" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="BookingStatus" EntityType="SpartanHotelsModel.Store.BookingStatus" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="Customer" EntityType="SpartanHotelsModel.Store.Customer" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="Hotel" EntityType="SpartanHotelsModel.Store.Hotel" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="HotelRooms" EntityType="SpartanHotelsModel.Store.HotelRooms" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="Policy" EntityType="SpartanHotelsModel.Store.Policy" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="Reservation" EntityType="SpartanHotelsModel.Store.Reservation" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="RoomType" EntityType="SpartanHotelsModel.Store.RoomType" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="sysdiagrams" EntityType="SpartanHotelsModel.Store.sysdiagrams" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
           <AssociationSet Name="FK_HotelRooms_Hotel" Association="SpartanHotelsModel.Store.FK_HotelRooms_Hotel">
             <End Role="Hotel" EntitySet="Hotel" />
             <End Role="HotelRooms" EntitySet="HotelRooms" />
@@ -163,7 +163,7 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="SpartanHotelsModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="SpartanHotelsModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns="http://schemas.microsoft.com/ado/2008/09/edm" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
         <EntityContainer Name="SpartanHotelsEntities" p1:LazyLoadingEnabled="true">
           <EntitySet Name="BookingStatus" EntityType="SpartanHotelsModel.BookingStatu" />
           <EntitySet Name="Customers" EntityType="SpartanHotelsModel.Customer" />
@@ -330,7 +330,7 @@
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
-      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="SpartanHotelsModelStoreContainer" CdmEntityContainer="SpartanHotelsEntities">
           <EntitySetMapping Name="BookingStatus">
             <EntityTypeMapping TypeName="SpartanHotelsModel.BookingStatu">
@@ -425,7 +425,7 @@
     </edmx:Mappings>
   </edmx:Runtime>
   <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
-  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
     <Connection>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
@@ -440,6 +440,6 @@
       </DesignerInfoPropertySet>
     </Options>
     <!-- Diagram content (shape and connector positions) -->
-    <Diagrams></Diagrams>
+    <Diagrams />
   </Designer>
 </edmx:Edmx>
