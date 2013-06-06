@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SpartanHotels.UX.DependencyResolution;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -15,7 +16,7 @@ namespace SpartanHotels.UX
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();
-
+            IoC.Initialize();
             //WebApiConfig.Register(GlobalConfiguration.Configuration);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
