@@ -1,0 +1,1033 @@
+/* Add additional stylesheets below
+-------------------------------------------------- */
+/*
+  Please create all Bootstrap overrides here.
+*/
+
+/* 
+-------------------------------------------------- */
+  .container-fluid {
+    max-width: 1180px;
+    margin:0 auto;
+    padding-right: 20px;
+    padding-left: 20px;
+    *zoom: 1;
+  }
+
+/* FONTS
+-------------------------------------------------- */
+
+
+
+@font-face {
+    font-family: 'museo_sans_for_dell_100Rg';
+    src: url('../fonts/museosansfordell-100-webfont.eot');
+    src: url('../fonts/museosansfordell-100-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/museosansfordell-100-webfont.woff') format('woff'),
+         url('../fonts/museosansfordell-100-webfont.ttf') format('truetype'),
+         url('../fonts/museosansfordell-100-webfont.svg#museo_sans_for_dell_100Rg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+@font-face {
+    font-family: 'museo_sans_for_dell_300Rg';
+    src: url('../fonts/museosansfordell-300-webfont.eot');
+    src: url('../fonts/museosansfordell-300-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/museosansfordell-300-webfont.woff') format('woff'),
+         url('../fonts/museosansfordell-300-webfont.ttf') format('truetype'),
+         url('../fonts/museosansfordell-300-webfont.svg#museo_sans_for_dell_300Rg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+@font-face {
+    font-family: 'museo_sans_for_dell_700Rg';
+    src: url('../fonts/museosansfordell-700-webfont.eot');
+    src: url('../fonts/museosansfordell-700-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/museosansfordell-700-webfont.woff') format('woff'),
+         url('../fonts/museosansfordell-700-webfont.ttf') format('truetype'),
+         url('../fonts/museosansfordell-700-webfont.svg#museo_sans_for_dell_700Rg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'museo_for_dell_100regular';
+    src: url('../fonts/museofordell-100-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/museofordell-100-webfont.woff') format('woff'),
+         url('../fonts/museofordell-100-webfont.ttf') format('truetype'),
+         url('../fonts/museofordell-100-webfont.svg#museo_for_dell_100regular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+
+@font-face {
+    font-family: 'museo_for_dell_300regular';
+    src: url('../fonts/museofordell-300-webfont.eot');
+    src: url('../fonts/museofordell-300-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/museofordell-300-webfont.woff') format('woff'),
+         url('../fonts/museofordell-300-webfont.ttf') format('truetype'),
+         url('../fonts/museofordell-300-webfont.svg#museo_for_dell_300regular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+
+@font-face {
+    font-family: 'museo_for_dell_700regular';
+    src: url('../fonts/museofordell-700-webfont.eot');
+    src: url('../fonts/museofordell-700-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/museofordell-700-webfont.woff') format('woff'),
+         url('../fonts/museofordell-700-webfont.ttf') format('truetype'),
+         url('../fonts/museofordell-700-webfont.svg#museo_for_dell_700regular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+
+
+/* TYPOGRAPHY
+-------------------------------------------------- */
+
+
+body {
+  margin: 0;
+  font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  color: #444444;
+  background-color: #ffffff;
+}
+
+a {
+  color: #0085c3;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #0085c3;
+  text-decoration: underline;
+}
+
+/* Edits made by:; AJ Lohman - just organized them a bit*/
+/* headers - All*/
+h1, h2, h3, h4 {
+  font-family: 'museo_for_dell_300regular', 'Trebuchet MS', Arial, Helvetica, sans-serif;
+  font-weight: normal;
+  color: inherit;
+  text-rendering: optimizelegibility;
+}
+
+/* Edits made by AJ Lohman */
+h5, h6 {
+  font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  color: inherit;
+  text-rendering: optimizelegibility;
+}
+
+h1,h2   {font-size: 36px;line-height: 40px;}
+h3      {font-size: 28px;line-height: 32px;}
+h4      {font-size: 20px;line-height: 22px;}
+h5      {font-size: 16px;line-height: 20px;}
+h6      {font-size: 14px;line-height: 18px;}
+
+/* Header - featured*/
+h4.feature {font-size: 50px;line-height: 100px;}
+
+/* Header - Bold*/
+h3.bold {font-family: 'museo_for_dell_700regular', 'Trebuchet MS', Arial, Helvetica, sans-serif;font-size: 26px;line-height: 28px;}
+h4.bold {font-family: 'museo_for_dell_700regular', 'Trebuchet MS', Arial, Helvetica, sans-serif;font-size: 20px;line-height: 22px;}
+
+
+.lead {
+  margin-bottom: 20px;
+  font-size: 18px;
+  font-weight: normal;
+  line-height: 24px;
+}
+
+small {
+  font-size: 12px;
+  font-weight: normal;
+  line-height: 16px;
+}
+
+blockquote p {
+  margin-bottom: 0;
+  font-size: 16px;
+  font-weight: normal;
+  line-height: 22px;
+}
+
+blockquote small {
+  display: block;
+  line-height: 20px;
+  color: #999999;
+}
+
+
+
+/* TABLES
+-------------------------------------------------- */
+
+.table tbody tr.info td {
+  background-color: #CCE7F3;
+}
+
+
+
+
+/* FORMS
+-------------------------------------------------- */
+textarea:focus,
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="datetime"]:focus,
+input[type="datetime-local"]:focus,
+input[type="date"]:focus,
+input[type="month"]:focus,
+input[type="time"]:focus,
+input[type="week"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="search"]:focus,
+input[type="tel"]:focus,
+input[type="color"]:focus,
+.uneditable-input:focus {
+  border-color: rgba(0, 133, 195); /*#0085C3;*/
+  outline: 0;
+  outline: thin dotted \9;
+  /* IE6-9 */
+
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 133, 195, 0.6);
+     -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 133, 195, 0.6);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 133, 195, 0.6);
+}
+
+
+input,
+button,
+select,
+textarea {
+  font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif;
+}
+
+
+select,
+textarea,
+input[type="text"],
+input[type="password"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="date"],
+input[type="month"],
+input[type="time"],
+input[type="week"],
+input[type="number"],
+input[type="email"],
+input[type="url"],
+input[type="search"],
+input[type="tel"],
+input[type="color"],
+.uneditable-input {
+  height: 24px;
+  color: #444444;
+}
+
+
+
+.input-append .add-on,
+.input-prepend .add-on {
+  height: 24px;
+}
+
+
+
+
+textarea,
+input[type="text"],
+input[type="password"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="date"],
+input[type="month"],
+input[type="time"],
+input[type="week"],
+input[type="number"],
+input[type="email"],
+input[type="url"],
+input[type="search"],
+input[type="tel"],
+input[type="color"],
+.uneditable-input {
+  border: 1px solid #dddddd;
+}
+
+
+select {
+  border: 1px solid #dddddd;
+}
+
+
+select,
+input[type="file"] {
+  height: 30px;
+  /* In IE7, the height of the select element cannot be changed by height, only font-size */
+
+  *margin-top: 4px;
+  /* For IE7, add top margin to align select with labels */
+
+  line-height: 30px;
+}
+
+
+select:focus,
+input[type="file"]:focus,
+input[type="radio"]:focus,
+input[type="checkbox"]:focus {
+  outline: none;
+  outline: none;
+  outline-offset: -2px;
+}
+
+
+
+
+
+
+
+
+
+
+/* BUTTONS
+-------------------------------------------------- */
+.btn {
+  font-family: "museo_sans_for_dell_300Rg", "Trebuchet MS", Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  display: inline-block;
+  *display: inline;
+  padding: 7px 11px;
+  margin-bottom: 0;
+  *margin-left: .3em;
+  line-height: 18px;
+  *line-height: 18px;
+  color: #444444;
+  text-align: center;
+  text-shadow: 0 0px 0px rgba(255, 255, 255, 0.75);
+  vertical-align: middle;
+  cursor: pointer;
+  background-color: #edf1f3;
+  *background-color: #edf1f3;
+  background-image: -moz-linear-gradient(top, #fefefe, #edf1f3);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#fefefe), to(#edf1f3));
+  background-image: -webkit-linear-gradient(top, #fefefe, #edf1f3);
+  background-image: -o-linear-gradient(top, #fefefe, #edf1f3);
+  background-image: linear-gradient(to bottom, #fefefe, #edf1f3);
+  background-repeat: repeat-x;
+  border: 1px solid #DDD;
+  *border: 0;
+  border-color: none;
+  border-bottom-color: none;
+  -webkit-border-radius: 3px;
+     -moz-border-radius: 3px;
+          border-radius: 3px;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fefefe', endColorstr='#edf1f3', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+  *zoom: 1;
+  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+     -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+          box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+
+
+.btn:hover,
+.btn:active,
+.btn.active,
+.btn.disabled,
+.btn[disabled] {
+  color: #444444;
+  background-color: #edf1f3;
+  *background-color: #edf1f3;
+}
+
+
+.btn:active,
+.btn.active {
+  background-color: #edf1f3 \9;
+}
+
+
+.btn:hover {
+  color: #444444;
+  text-decoration: none;
+  background-color: #edf1f3;
+  *background-color: #edf1f3;
+  /* Buttons in IE7 don't get borders, so darken on hover */
+
+  background-position: 0 -15px;
+  -webkit-transition: background-position 0.1s linear;
+     -moz-transition: background-position 0.1s linear;
+       -o-transition: background-position 0.1s linear;
+          transition: background-position 0.1s linear;
+}
+
+.btn:focus {
+  outline: none;
+  outline: none;
+  outline-offset: -2px;
+}
+
+
+
+.btn.active,
+.btn:active {
+  background-color: #edf1f3;
+  background-color: #edf1f3 \9;
+  background-image: none;
+  outline: 0;
+  -webkit-box-shadow: inset 0 0px 0 rgba(255, 255, 255, 0.2), 0px 0px 0px rgba(0, 0, 0, .4);
+     -moz-box-shadow: inset 0 0px 0 rgba(255, 255, 255, 0.2), 0px 0px 0px rgba(0, 0, 0, .4);
+          box-shadow: inset 0 0px 0 rgba(255, 255, 255, 0.2), 0px 0px 0px rgba(0, 0, 0, .4);
+}
+
+
+.btn.disabled,
+.btn[disabled] {
+  cursor: default;
+  background-color: #edf1f3;
+  background-image: none;
+  opacity: 0.65;
+  filter: alpha(opacity=65);
+  -webkit-box-shadow: none;
+     -moz-box-shadow: none;
+          box-shadow: none;
+}
+
+
+
+
+
+
+.btn-primary {
+  color: #ffffff;
+  text-shadow: none;
+  background-color: #53a726;
+  *background-color: #53a726;
+  background-image: -moz-linear-gradient(top, #a0d249, #53a726);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#a0d249), to(#53a726));
+  background-image: -webkit-linear-gradient(top, #a0d249, #53a726);
+  background-image: -o-linear-gradient(top, #a0d249, #53a726);
+  background-image: linear-gradient(to bottom, #a0d249, #53a726);
+  border: none;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#1cb1e3', endColorstr='#0f6cc9', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+}
+
+
+.btn-primary:hover,
+.btn-primary:active,
+.btn-primary.active,
+.btn-primary.disabled,
+.btn-primary[disabled] {
+  color: #ffffff;
+  background-color: #53a726;
+  *background-color: #53a726;
+}
+
+.btn-primary:active,
+.btn-primary.active {
+  background-color: #53a726 \9;
+}
+
+
+
+
+.btn-secondary {
+  color: #ffffff;
+  text-shadow: none;
+  background-color: #0f6cc9;
+  *background-color: #0f6cc9;
+  background-image: -moz-linear-gradient(top, #1cb1e3, #0f6cc9);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#1cb1e3), to(#0f6cc9));
+  background-image: -webkit-linear-gradient(top, #1cb1e3, #0f6cc9);
+  background-image: -o-linear-gradient(top, #1cb1e3, #0f6cc9);
+  background-image: linear-gradient(to bottom, #1cb1e3, #0f6cc9);
+  border: none;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#1cb1e3', endColorstr='#0f6cc9', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+}
+
+
+.btn-secondary:hover,
+.btn-secondary:active,
+.btn-secondary.active,
+.btn-secondary.disabled,
+.btn-secondary[disabled] {
+  color: #ffffff;
+  background-color: #0f6cc9;
+  *background-color: #0f6cc9;
+}
+
+.btn-secondary:active,
+.btn-secondary.active {
+  background-color: #0f6cc9 \9;
+}
+
+
+
+.btn-tertiary {
+  color: #0085c3;
+  text-shadow: none;
+  background-color: #edf1f3;
+  *background-color: #edf1f3;
+  background-image: -moz-linear-gradient(top, #fefefe, #edf1f3);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#fefefe), to(#edf1f3));
+  background-image: -webkit-linear-gradient(top, #fefefe, #edf1f3);
+  background-image: -o-linear-gradient(top, #fefefe, #edf1f3);
+  background-image: linear-gradient(to bottom, #fefefe, #edf1f3);
+  border-color: none;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fefefe', endColorstr='#edf1f3', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+}
+
+.btn-tertiary:hover,
+.btn-tertiary:active,
+.btn-tertiary.active,
+.btn-tertiary.disabled,
+.btn-tertiary[disabled] {
+  color: #0085c3;
+  background-color: #edf1f3;
+  *background-color: #edf1f3;
+}
+
+.btn-tertiary:active,
+.btn-tertiary.active {
+  background-color: #edf1f3 \9;
+}
+
+.btn-info {
+  font-family: "museo_for_dell_700regular", "Trebuchet MS", Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  padding: 5px 10px 4px 10px;
+/*  line-height: 20px;
+  *line-height: 20px;*/
+  color: #ffffff;
+  text-shadow: none;
+  background-color: #0f6cc9;
+  *background-color: #0f6cc9;
+  background-image: -moz-linear-gradient(top, #1cb1e3, #0f6cc9);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#1cb1e3), to(#0f6cc9));
+  background-image: -webkit-linear-gradient(top, #1cb1e3, #0f6cc9);
+  background-image: -o-linear-gradient(top, #1cb1e3, #0f6cc9);
+  background-image: linear-gradient(to bottom, #1cb1e3, #0f6cc9);
+  border: none;
+  -webkit-border-radius: 3px;
+     -moz-border-radius: 3px;
+          border-radius: 3px;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#1cb1e3', endColorstr='#0f6cc9', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+}
+
+
+.btn-info:hover,
+.btn-info:active,
+.btn-info.active,
+.btn-info.disabled,
+.btn-info[disabled] {
+  color: #ffffff;
+  background-color: #0f6cc9;
+  *background-color: #0f6cc9;
+}
+
+
+.btn-info:active,
+.btn-info.active {
+  background-color: #0f6cc9 \9;
+}
+
+
+.btn-hotspot {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  font-style: bold;
+  font-size: 28px;
+  padding: 3px 6px 7px 6px;
+/*  line-height: 20px;
+  *line-height: 20px;*/
+  color: #ffffff;
+  text-shadow: none;
+  background-color: #0f6cc9;
+  *background-color: #0f6cc9;
+  background-image: -moz-linear-gradient(top, #1cb1e3, #0f6cc9);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#1cb1e3), to(#0f6cc9));
+  background-image: -webkit-linear-gradient(top, #1cb1e3, #0f6cc9);
+  background-image: -o-linear-gradient(top, #1cb1e3, #0f6cc9);
+  background-image: linear-gradient(to bottom, #1cb1e3, #0f6cc9);
+  border: none;
+  -webkit-border-radius: 15px 15px 15px 0px;
+     -moz-border-radius: 15px 15px 15px 0px;
+          border-radius: 15px 15px 15px 0px;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#1cb1e3', endColorstr='#0f6cc9', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+}
+
+
+.btn-hotspot:hover,
+.btn-hotspot:active,
+.btn-hotspot.active,
+.btn-hotspot.disabled,
+.btn-hotspot[disabled] {
+  color: #ffffff;
+  background-color: #0f6cc9;
+  *background-color: #0f6cc9;
+}
+
+
+.btn-hotspot:active,
+.btn-hotspot.active {
+  background-color: #0f6cc9 \9;
+}
+
+
+
+.btn-link,
+.btn-link:active,
+.btn-link[disabled] {
+  background-color: transparent;
+  background-image: none;
+  -webkit-box-shadow: none;
+     -moz-box-shadow: none;
+          box-shadow: none;
+}
+
+.btn-link {
+  color: #0085c3;
+  cursor: pointer;
+  border-color: transparent;
+  -webkit-border-radius: 0;
+     -moz-border-radius: 0;
+          border-radius: 0;
+}
+
+.btn-link:hover {
+  color: #0085c3;
+  text-decoration: underline;
+  background-color: transparent;
+}
+
+.btn-link[disabled]:hover {
+  color: #333333;
+  text-decoration: none;
+}
+
+
+
+
+.btn-large {
+  padding: 12px 16px;
+  font-size: 17.5px;
+  -webkit-border-radius: 5px;
+     -moz-border-radius: 5px;
+          border-radius: 5px;
+}
+
+
+.btn-small {
+  padding: 4px 8px;
+  font-size: 11.9px;
+  -webkit-border-radius: 3px;
+     -moz-border-radius: 3px;
+          border-radius: 3px;
+}
+
+
+.btn-mini {
+  padding: 1px 6px 0px 6px;
+  font-size: 10.5px;
+  -webkit-border-radius: 3px;
+     -moz-border-radius: 3px;
+          border-radius: 3px;
+}
+
+
+.btn-mini.btn-info {
+  font-size: 15px;
+/*  line-height: 24px;*/
+}
+
+
+
+
+.btn-group > .btn + .dropdown-toggle {
+  *padding-top: 5px;
+  padding-right: 8px;
+  *padding-bottom: 5px;
+  padding-left: 8px;
+/* -webkit-box-shadow: inset 2px 0 0 rgba(255, 255, 255, 0.1), inset 1px 0px 0 rgba(0, 0, 0, 0.1), 0px 0px 0px rgba(0, 0, 0, .4);
+     -moz-box-shadow: inset 2px 0 0 rgba(255, 255, 255, 0.1), inset 1px 0px 0 rgba(0, 0, 0, 0.1), 0px 0px 0px rgba(0, 0, 0, .4);
+          box-shadow: inset 2px 0 0 rgba(255, 255, 255, 0.1), inset 1px 0px 0 rgba(0, 0, 0, 0.1), 0px 0px 0px rgba(0, 0, 0, .4);*/
+}
+
+
+.btn-group.open .btn.dropdown-toggle {
+  background-color: #cfd9de;
+}
+
+.btn-group.open .btn-primary.dropdown-toggle {
+  background-color: #53a726;
+}
+
+.btn-group.open .btn-secondary.dropdown-toggle {
+  background-color: #0f6cc9;
+}
+
+.btn-group.open .btn-tertiary.dropdown-toggle {
+  background-color: #cfd9de;
+}
+
+
+
+.btn-primary .caret,
+.btn-secondary .caret{
+	border-top-color: #ffffff;
+	border-bottom-color: #ffffff;
+}
+
+.btn-tertiary .caret{
+	border-top-color: #0085c3;
+	border-bottom-color: #0085c3;
+}
+
+
+.dropdown-menu li > a {
+  display: block;
+  padding: 3px 20px;
+  clear: both;
+  font-weight: normal;
+  line-height: 20px;
+  color: #444444;
+  white-space: nowrap;
+}
+
+
+
+.dropdown-menu li > a:hover,
+.dropdown-menu li > a:focus,
+.dropdown-submenu:hover > a {
+  color: #ffffff;
+  text-decoration: none;
+  background-color: #0085c3;
+  background-image: none;
+  background-image: none;
+  background-image: none;
+  background-image: none;
+  background-image: none;
+  background-repeat: repeat-x;
+  filter: none;
+
+}
+
+
+/* IMAGES
+-------------------------------------------------- */
+
+
+.img-rounded {
+  -webkit-border-radius: 10px;
+     -moz-border-radius: 10px;
+          border-radius: 10px;
+}
+
+
+
+/* COLORS
+-------------------------------------------------- */
+
+.color-block {
+  padding:30px 0px;
+  margin-top:20px;
+  border: 1px solid #eeeeee;
+}
+
+
+.white {
+  color:#ffffff;
+}
+
+
+.dell_darkgray {
+  background-color: #444444;
+}
+
+.dell_gray {
+  background-color: #aaaaaa;
+}
+
+.dell_lightgray {
+  background-color: #eeeeee;
+}
+
+
+
+.dell_blue {
+  background-color: #0085c3;
+}
+
+.dell_green {
+  background-color: #7ab800;
+}
+
+.dell_yellow {
+  background-color: #F2AF00;
+}
+
+.dell_orange {
+  background-color: #FF7700;
+}
+
+.dell_red {
+  background-color: #DC5034;
+}
+
+.dell_darkred {
+  background-color: #CE1126;
+}
+
+.dell_berry {
+  background-color: #B7295A;
+}
+
+.dell_purple {
+  background-color: #6E2585;
+}
+
+.dell_teal {
+  background-color: #71C6C1;
+}
+
+.gsd_navyblue {
+  background-color: #003758;
+}
+
+.gsd_lightblue {
+  background-color: #CCE7F3;
+}
+
+.gsd_orange {
+  background-color: #fd5400;
+}
+
+.gsd_gray {
+  background-color: #737373;
+}
+
+
+
+/* NAVS
+-------------------------------------------------- */
+
+.nav-list > .active > a,
+.nav-list > .active > a:hover {
+  color: #ffffff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.2);
+  background-color: #0085c3;
+}
+
+
+.nav-pills > .active > a,
+.nav-pills > .active > a:hover {
+  color: #ffffff;
+  background-color: #0085c3;
+  position: relative; /*Added so that the arrow pointer can be abolute positioned*/
+}
+
+
+
+/*This is the small arrow below the nav pills, 308 style addition
+-------------------------------------------------- */
+.nav-pills > .active > a:after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -10px;
+  border-top: 10px solid #0085C3;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+}
+/*-------------------------------------------------- */
+
+
+/*Removes small arrow below the nav pills for stacked pills
+-------------------------------------------------- */
+.nav-pills.nav-stacked > .active > a:after {
+  display:none;
+}
+/*-------------------------------------------------- */
+
+
+
+.nav .dropdown-toggle .caret {
+  margin-top: 6px;
+  border-top-color: #0085c3;
+  border-bottom-color: #0085c3;
+}
+
+.nav .dropdown-toggle:hover .caret {
+  border-top-color: #0085c3;
+  border-bottom-color: #0085c3;
+}
+
+
+.nav-tabs > .active > a,
+.nav-tabs > .active > a:hover {
+  color: #444444;
+  cursor: default;
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-bottom-color: transparent;
+}
+
+
+
+
+
+
+
+
+
+
+/* BREADCRUMBS
+-------------------------------------------------- */
+
+
+.breadcrumb {
+  padding: 8px 15px;
+  margin: 0 0 20px;
+  list-style: none;
+  background-color: transparent;
+  -webkit-border-radius: 0px;
+     -moz-border-radius: 0px;
+          border-radius: 0px;
+}
+
+.breadcrumb li {
+  display: inline-block;
+  *display: inline;
+  text-shadow: none;
+  *zoom: 1;
+}
+
+.breadcrumb .divider {
+  padding: 0 5px;
+  color: #ccc;
+}
+
+/* Edits made bu: AJ Lohman*/
+
+/* Block Grids ---------------------- */
+/* These are 2-up, 3-up, 4-up and 5-up ULs, suited
+for repeating blocks of content. Add 'mobile' to
+them to switch them just like the layout grid
+(one item per line) on phones
+
+For IE7/8 compatibility block-grid items need to be
+the same height. You can optionally uncomment the
+lines below to support arbitrary height, but know
+that IE7/8 do not support :nth-child.
+-------------------------------------------------- */
+.block-grid { display: block; overflow: hidden; padding: 0;}
+.block-grid > li { display: block; height: auto; float: left; }
+.block-grid.one-up { margin: 0; margin: 0 -8px; }
+.block-grid.one-up > li { width: 100%; padding: 0 0 15px; padding: 0 8px 8px; }
+.block-grid.two-up { margin: 0 -15px; margin: 0 -8px; }
+.block-grid.two-up > li { width: 50%; padding: 0 15px 15px; padding: 0 8px 8px; }
+.block-grid.two-up > li:nth-child(2n+1) { clear: both; }
+.block-grid.three-up { margin: 0 -12px; margin: 0 -8px; }
+.block-grid.three-up > li { width: 33.33333%; padding: 0 12px 12px; padding: 0 8px 8px; }
+.block-grid.three-up > li:nth-child(3n+1) { clear: both; }
+.block-grid.four-up { margin: 0 -10px; background:red;}
+.block-grid.four-up > li { width: 23%; padding: 0 10px 10px; }
+.block-grid.four-up > li:nth-child(4n+1) { clear: both; }
+.block-grid.five-up { margin: 0 -8px; }
+.block-grid.five-up > li { width: 20%; padding: 0 8px 8px; }
+.block-grid.five-up > li:nth-child(5n+1) { clear: both; }
+.block-grid.six-up { margin: 0 -8px; }
+.block-grid.six-up > li { width: 16.66667%; padding: 0 8px 8px; }
+.block-grid.six-up > li:nth-child(6n+1) { clear: both; }
+.block-grid.seven-up { margin: 0 -8px; }
+.block-grid.seven-up > li { width: 14.28571%; padding: 0 8px 8px; }
+.block-grid.seven-up > li:nth-child(7n+1) { clear: both; }
+.block-grid.eight-up { margin: 0 -8px; }
+.block-grid.eight-up > li { width: 12.5%; padding: 0 8px 8px; }
+.block-grid.eight-up > li:nth-child(8n+1) { clear: both; }
+.block-grid.nine-up { margin: 0 -8px; }
+.block-grid.nine-up > li { width: 11.11111%; padding: 0 8px 8px; }
+.block-grid.nine-up > li:nth-child(9n+1) { clear: both; }
+.block-grid.ten-up { margin: 0 -8px; }
+.block-grid.ten-up > li { width: 10%; padding: 0 8px 8px; }
+.block-grid.ten-up > li:nth-child(10n+1) { clear: both; }
+.block-grid.eleven-up { margin: 0 -8px; }
+.block-grid.eleven-up > li { width: 9.09091%; padding: 0 8px 8px; }
+.block-grid.eleven-up > li:nth-child(11n+1) { clear: both; }
+.block-grid.twelve-up { margin: 0 -8px; }
+.block-grid.twelve-up > li { width: 8.33333%; padding: 0 8px 8px; }
+.block-grid.twelve-up > li:nth-child(12n+1) { clear: both; }
+
+
+
+/* Media queries
+-------------------------------------------------- */
+
+/* Edits made by: AJ Lohman */
+@media (max-width: 767px) {
+
+  /* Edits made by: AJ Lohman - removes the default 20px padding from Bootstrap.  */
+  body {
+    padding-right:0;
+    padding-left:0;
+  }
+
+  /* Block Grids --- */
+  /*                 */
+  .block-grid.mobile > li { float: none; width: 100%; margin-left: 0; }
+  .block-grid > li { clear: none !important; }
+  .block-grid.mobile-one-up > li { width: 100%; }
+  .block-grid.mobile-two-up > li { width: 42.93617021276595%; background: red;}
+  .block-grid.mobile-two-up > li:nth-child(2n+1) { clear: both; }
+  .block-grid.mobile-three-up > li { width: 33.33333%; }
+  .block-grid.mobile-three-up > li:nth-child(3n+1) { clear: both; }
+  .block-grid.mobile-four-up > li { width: 25%; }
+  .block-grid.mobile-four-up > li:nth-child(4n+1) { clear: both; }
+  .block-grid.mobile-five-up > li { width: 20%; }
+  .block-grid.mobile-five-up > li:nth-child(5n+1) { clear: both; }
+  .block-grid.mobile-six-up > li { width: 16.66667%; }
+  .block-grid.mobile-six-up > li:nth-child(6n+1) { clear: both; }
+  .block-grid.mobile-seven-up > li { width: 14.28571%; }
+  .block-grid.mobile-seven-up > li:nth-child(7n+1) { clear: both; }
+  .block-grid.mobile-eight-up > li { width: 12.5%; }
+  .block-grid.mobile-eight-up > li:nth-child(8n+1) { clear: both; }
+  .block-grid.mobile-nine-up > li { width: 11.11111%; }
+  .block-grid.mobile-nine-up > li:nth-child(9n+1) { clear: both; }
+  .block-grid.mobile-ten-up > li { width: 10%; }
+  .block-grid.mobile-ten-up > li:nth-child(10n+1) { clear: both; }
+  .block-grid.mobile-eleven-up > li { width: 9.09091%; }
+  .block-grid.mobile-eleven-up > li:nth-child(11n+1) { clear: both; }
+  .block-grid.mobile-twelve-up > li { width: 8.33333%; }
+  .block-grid.mobile-twelve-up > li:nth-child(12n+1) { clear: both; }
+
+}

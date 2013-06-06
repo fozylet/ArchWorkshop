@@ -1,0 +1,63 @@
+﻿@model SpartanHotels.Entities.BookingRequest
+@{
+    Layout = "";
+}
+<div id="results">
+@using (Ajax.BeginForm(new AjaxOptions
+{
+    Url = Url.Action("Confirm", "Booking"),
+    OnSuccess = "ShowConfirm",
+    OnFailure = "HideResults"
+}))
+{
+<table>
+    <caption>Available Rooms</caption>
+    <thead>
+        <tr>
+            <th>Room ID</th><th></th>
+            <th>Room Type</th>
+            <th>Available</th><th></th>
+            <th>Rate</th><th></th>
+        </tr>
+    </thead>
+    <tbody id="rooms" data-bind="foreach: Availability">
+        <tr>
+            <td data-bind="text: Room.Id"></td>
+            <td><input type="hidden" data-bind="value: Room.Id, attr: { name:'RequestedRooms[' + $index() + '].RequestedRoom.Id' }" /></td>
+            <td data-bind="text: Room.Title"></td>
+            <td data-bind="text: AvailableCount"></td>
+            <td><input type="text" value="0" data-bind="attr: { name: 'RequestedRooms[' + $index() + '].RoomCount' }" /></td>
+            <td data-bind="text: Room.Rate"></td>
+            <td><input type="hidden" value="0" data-bind="value: Room.Rate, attr: { name: 'RequestedRooms[' + $index() + '].RequestedRoom.Rate' }" /></td>
+        </tr>
+    </tbody>
+</table>
+    
+    @Html.ValidationSummary(true)
+    <fieldset style="margin-right:30px;">
+        <legend>Customer Details</legend>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Guest.FirstName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Guest.FirstName, new {@data_bind="value: Booking.Guest.FirstName" })
+            @Html.ValidationMessageFor(model => model.Guest.FirstName)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Guest.LastName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Guest.LastName)
+            @Html.ValidationMessageFor(model => model.Guest.LastName)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Guest.EMailAddress)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Guest.EMailAddress)
+            @Html.ValidationMessageFor(model => model.Guest.EMailAddress)
+        </div>
+        <input type="submit" value="Book" />
+    </fieldset>
+}
+</div>

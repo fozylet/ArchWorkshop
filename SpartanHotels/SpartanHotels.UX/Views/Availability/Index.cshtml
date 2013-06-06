@@ -1,0 +1,90 @@
+﻿@using SpartanHotels.Entities;
+@model SpartanHotels.Entities.AvailabilityRequest
+
+@{
+    ViewBag.Title = "Search Availability";
+}
+@section Left{
+@using (Ajax.BeginForm(new AjaxOptions {
+    Url = Url.Action("Get", "Availability"),
+    OnBegin = "ShowWait",
+    OnSuccess = "BindResults",
+    OnFailure = "HideResults"
+}))
+{
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>@ViewBag.Title</legend>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.FromDate)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.FromDate)
+            @Html.ValidationMessageFor(model => model.FromDate)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ToDate)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ToDate)
+            @Html.ValidationMessageFor(model => model.ToDate)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.RequestedRoomCount)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.RequestedRoomCount)
+            @Html.ValidationMessageFor(model => model.RequestedRoomCount)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.City)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.City)
+            @Html.ValidationMessageFor(model => model.City)
+        </div>
+        <p>
+            <input type="submit" value="Check Availability" />
+        </p>
+    </fieldset>
+}
+}
+@section Scripts{
+    <script src="~/Scripts/MvcFoolproofJQueryValidation.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        var
+            viewModel = {Availability: ko.observableArray(), Booking: ko.observable()},
+            BindResults = function (data) {
+                ShowResults();
+                viewModel.Availability(data[0].Rooms);
+                viewModel.Booking(data[1]);
+            },
+            HideResults = function () {
+                $('#results').hide()
+            },
+            ShowWait = function () {
+                $('#status').show()
+            },
+            ShowResults = function () {
+                $('#status').hide()
+                $('#confirm').hide();
+                $("#results").show();
+            },
+            ShowConfirm = function (data) {
+                $('#results').hide();
+                $('#confirm').show();
+                $('#confirm p span').html(data.ReservationId);
+            };
+        ko.applyBindings(viewModel);
+    </script>
+}
+
+<div id="status"></div>
+
+<div id="confirm" style="display:none; color:Red; font-weight: bold; background-color: #e0e0e0; border: 1px solid blue;"> 
+        <p>Booking in Progress. Reservation ID: <span></span></p> 
+</div>
+
+<div>
+@Html.Action("Index","Booking")
+</div>

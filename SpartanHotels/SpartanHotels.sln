@@ -1,0 +1,87 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpartanHotels.UX", "SpartanHotels.UX\SpartanHotels.UX.csproj", "{B381A454-2049-429F-90DF-A40F1560A63E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpartanHotels.Api", "SpartanHotels.Api\SpartanHotels.Api.csproj", "{98E8A4AF-A0E9-4462-A4C5-7D080125FFA5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpartanHotels.Entities", "SpartanHotels.Entities\SpartanHotels.Entities.csproj", "{01523AE1-265D-48E1-B762-D54FF537C5A3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpartanHotels.Domain", "SpartanHotels.Domain\SpartanHotels.Domain.csproj", "{3BF00432-BC3E-4BA5-A4AF-CF518DEB8F91}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpartanHotels.Worker", "SpartanHotels.Worker\SpartanHotels.Worker.csproj", "{7DC6C6FE-67D0-4E8B-A17A-1B3560D3F91A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpartanHotels.Domain.Contracts", "SpartanHotels.Domain.Contracts\SpartanHotels.Domain.Contracts.csproj", "{482E48F7-7E95-4991-81C4-AE8391FB393A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpartanHotels.Repository.Contracts", "SpartanHotels.Repository.Contracts\SpartanHotels.Repository.Contracts.csproj", "{237D232C-2616-4E2C-85E5-B61218158479}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{3EE535CD-C163-4A5A-A968-DAF8B98E3B4D}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpartanHotels.Repository.Core", "SpartanHotels.Repository.Core\SpartanHotels.Repository.Core.csproj", "{48B5DCA7-008C-4E1F-9AE5-05B1F6D08984}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpartanHotels.Repository.Web", "SpartanHotels.Repository.Web\SpartanHotels.Repository.Web.csproj", "{D826E9C0-93F9-4820-9493-FB187FA22152}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpartanHotels.Repository.Worker", "SpartanHotels.Repository.Worker\SpartanHotels.Repository.Worker.csproj", "{0A7D8569-93D2-41ED-848C-A8F3E4177C32}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpartanHotels.Test", "SpartanHotels.Test\SpartanHotels.Test.csproj", "{66311687-988B-405E-812A-7643C528AD26}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B381A454-2049-429F-90DF-A40F1560A63E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B381A454-2049-429F-90DF-A40F1560A63E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B381A454-2049-429F-90DF-A40F1560A63E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B381A454-2049-429F-90DF-A40F1560A63E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{98E8A4AF-A0E9-4462-A4C5-7D080125FFA5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{98E8A4AF-A0E9-4462-A4C5-7D080125FFA5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{98E8A4AF-A0E9-4462-A4C5-7D080125FFA5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{98E8A4AF-A0E9-4462-A4C5-7D080125FFA5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{01523AE1-265D-48E1-B762-D54FF537C5A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01523AE1-265D-48E1-B762-D54FF537C5A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01523AE1-265D-48E1-B762-D54FF537C5A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01523AE1-265D-48E1-B762-D54FF537C5A3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3BF00432-BC3E-4BA5-A4AF-CF518DEB8F91}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3BF00432-BC3E-4BA5-A4AF-CF518DEB8F91}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3BF00432-BC3E-4BA5-A4AF-CF518DEB8F91}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3BF00432-BC3E-4BA5-A4AF-CF518DEB8F91}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7DC6C6FE-67D0-4E8B-A17A-1B3560D3F91A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7DC6C6FE-67D0-4E8B-A17A-1B3560D3F91A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7DC6C6FE-67D0-4E8B-A17A-1B3560D3F91A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7DC6C6FE-67D0-4E8B-A17A-1B3560D3F91A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{482E48F7-7E95-4991-81C4-AE8391FB393A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{482E48F7-7E95-4991-81C4-AE8391FB393A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{482E48F7-7E95-4991-81C4-AE8391FB393A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{482E48F7-7E95-4991-81C4-AE8391FB393A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{237D232C-2616-4E2C-85E5-B61218158479}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{237D232C-2616-4E2C-85E5-B61218158479}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{237D232C-2616-4E2C-85E5-B61218158479}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{237D232C-2616-4E2C-85E5-B61218158479}.Release|Any CPU.Build.0 = Release|Any CPU
+		{48B5DCA7-008C-4E1F-9AE5-05B1F6D08984}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{48B5DCA7-008C-4E1F-9AE5-05B1F6D08984}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{48B5DCA7-008C-4E1F-9AE5-05B1F6D08984}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{48B5DCA7-008C-4E1F-9AE5-05B1F6D08984}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D826E9C0-93F9-4820-9493-FB187FA22152}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D826E9C0-93F9-4820-9493-FB187FA22152}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D826E9C0-93F9-4820-9493-FB187FA22152}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D826E9C0-93F9-4820-9493-FB187FA22152}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0A7D8569-93D2-41ED-848C-A8F3E4177C32}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A7D8569-93D2-41ED-848C-A8F3E4177C32}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A7D8569-93D2-41ED-848C-A8F3E4177C32}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A7D8569-93D2-41ED-848C-A8F3E4177C32}.Release|Any CPU.Build.0 = Release|Any CPU
+		{66311687-988B-405E-812A-7643C528AD26}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{66311687-988B-405E-812A-7643C528AD26}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{66311687-988B-405E-812A-7643C528AD26}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{66311687-988B-405E-812A-7643C528AD26}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

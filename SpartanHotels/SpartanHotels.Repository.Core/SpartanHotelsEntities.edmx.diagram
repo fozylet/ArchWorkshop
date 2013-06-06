@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d63e6cf40b50494dbec981e34b0c92a3" Name="Diagram1">
+        <EntityTypeShape EntityType="SpartanHotelsModel.BookingStatu" Width="1.5" PointX="3" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SpartanHotelsModel.Customer" Width="1.5" PointX="3" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="SpartanHotelsModel.Hotel" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SpartanHotelsModel.HotelRoom" Width="1.5" PointX="3" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SpartanHotelsModel.Policy" Width="1.5" PointX="5.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SpartanHotelsModel.Reservation" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="SpartanHotelsModel.RoomType" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SpartanHotelsModel.sysdiagram" Width="1.5" PointX="7.75" PointY="3.75" IsExpanded="true" />
+        <AssociationConnector Association="SpartanHotelsModel.FK_Reservation_BookingStatus" ManuallyRouted="false" />
+        <AssociationConnector Association="SpartanHotelsModel.FK_Reservation_Customer" ManuallyRouted="false" />
+        <AssociationConnector Association="SpartanHotelsModel.FK_HotelRooms_Hotel" ManuallyRouted="false" />
+        <AssociationConnector Association="SpartanHotelsModel.FK_Reservation_HotelRooms" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
