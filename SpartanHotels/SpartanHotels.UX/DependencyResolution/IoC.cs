@@ -36,6 +36,7 @@ namespace SpartanHotels.UX.DependencyResolution {
                                         scan.AddAllTypesOf<IBooking>();
                                         scan.AddAllTypesOf<ICancellation>();
                                         scan.AddAllTypesOf<ISnapshotRepository>();
+                                        scan.AddAllTypesOf<IMasterRepository>();
                                     });
                             /*
                             x.For<IAvailability>().Use<SearchHandler>();
