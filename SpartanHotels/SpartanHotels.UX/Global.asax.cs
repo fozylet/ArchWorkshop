@@ -21,8 +21,10 @@ namespace SpartanHotels.Ux
                 {
                     scan.TheCallingAssembly();
                     scan.WithDefaultConventions();
-                    scan.AssembliesFromApplicationBaseDirectory();
-                    scan.AssembliesFromPath(".");
+                    //scan.AssembliesFromApplicationBaseDirectory();
+                    scan.Assembly("SpartanHotels.Domain");
+                    scan.Assembly("SpartanHotels.Repository.Web");
+                    scan.Assembly("SpartanHotels.Repository.Worker");
                     scan.AddAllTypesOf<IAvailability>();
                     scan.AddAllTypesOf<IStatus>();
                     scan.AddAllTypesOf<IBooking>();
