@@ -166,6 +166,10 @@
       <Project>{482e48f7-7e95-4991-81c4-ae8391fb393a}</Project>
       <Name>SpartanHotels.Domain.Contracts</Name>
     </ProjectReference>
+    <ProjectReference Include="..\SpartanHotels.Domain\SpartanHotels.Domain.csproj">
+      <Project>{3bf00432-bc3e-4ba5-a4af-cf518deb8f91}</Project>
+      <Name>SpartanHotels.Domain</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SpartanHotels.Entities\SpartanHotels.Entities.csproj">
       <Project>{01523ae1-265d-48e1-b762-d54ff537c5a3}</Project>
       <Name>SpartanHotels.Entities</Name>
@@ -173,6 +177,18 @@
     <ProjectReference Include="..\SpartanHotels.Repository.Contracts\SpartanHotels.Repository.Contracts.csproj">
       <Project>{237d232c-2616-4e2c-85e5-b61218158479}</Project>
       <Name>SpartanHotels.Repository.Contracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SpartanHotels.Repository.Core\SpartanHotels.Repository.Core.csproj">
+      <Project>{48b5dca7-008c-4e1f-9ae5-05b1f6d08984}</Project>
+      <Name>SpartanHotels.Repository.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SpartanHotels.Repository.Web\SpartanHotels.Repository.Web.csproj">
+      <Project>{d826e9c0-93f9-4820-9493-fb187fa22152}</Project>
+      <Name>SpartanHotels.Repository.Web</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SpartanHotels.Repository.Worker\SpartanHotels.Repository.Worker.csproj">
+      <Project>{0a7d8569-93d2-41ed-848c-a8f3e4177c32}</Project>
+      <Name>SpartanHotels.Repository.Worker</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
