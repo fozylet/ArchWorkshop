@@ -230,13 +230,7 @@ namespace SpartanHotels.Repository.Core
             {
                 var customer = context.Customers.FirstOrDefault(c => (c.Email == emailId));
 
-                if (customer != null)
-                {
-                    response.CustomerID = customer.CustomerID;
-                    response.FirstName = customer.FirstName;
-                    response.LastName = customer.LastName;
-                }
-                else
+                if (customer == null)
                 {
                     var eCustomer = new Customer
                     {
@@ -249,8 +243,12 @@ namespace SpartanHotels.Repository.Core
                     context.SaveChanges();
 
                     customer = context.Customers.FirstOrDefault(c => (c.Email == emailId));
-                    response.CustomerID = customer != null ? customer.CustomerID : 0;
                 }
+
+                response.CustomerID = customer.CustomerID;
+                response.FirstName = customer.FirstName;
+                response.LastName = customer.LastName;
+                response.Email = customer.Email;
             }
 
             return response;
