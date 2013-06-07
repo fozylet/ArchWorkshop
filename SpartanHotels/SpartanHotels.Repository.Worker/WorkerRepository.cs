@@ -30,6 +30,27 @@ namespace SpartanHotels.Repository.Worker
             return dbAccess.GetBookingStatus(request);
         }
 
+        public BookingResponse ReadQueue(BookingRequest request)
+        {
+            var dbAccess = new DbAccess();
+
+            return dbAccess.ReadQueue(request);
+        }
+
+        public bool AddQueue(BookingRequest request)
+        {
+            var dbAccess = new DbAccess();
+
+            return dbAccess.AddQueue(request);
+        }
+
+        public bool DeleteQueue(BookingRequest request)
+        {
+            var dbAccess = new DbAccess();
+
+            return dbAccess.DeleteQueue(request);
+        }
+
         public BookingResponse Push(BookingRequest request)
         {
             string strReservationId = Guid.NewGuid().ToString();

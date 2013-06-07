@@ -261,6 +261,69 @@ namespace SpartanHotels.Repository.Core
             return response;
         }
 
+        public BookingResponse ReadQueue(BookingRequest request)
+        {
+            var response = new BookingResponse();
+            using (var context = new SpartanHotelsEntities())
+            {
+                var queue = context.Queues.FirstOrDefault(q => (q.ReservationID == request.BookingId));
+
+                if (queue != null)
+                {
+                    response.ReservationId = queue.ReservationID;
+                    response.ReservationId = queue.ReservationID;
+                    response.ReservationId = queue.ReservationID;
+                }
+                else
+                {
+                    //return.. invalid input, queue doesnt exists
+                }
+            }
+
+            return response;
+        }
+
+        public bool AddQueue(BookingRequest request)
+        {
+            using (var context = new SpartanHotelsEntities())
+            {
+                if (!context.Queues.Any(q => (q.ReservationID == request.BookingId)))
+                {
+                    var queue = new Queue {ReservationID = request.BookingId, request = new byte[0], status = false};
+                    context.Queues.Add(queue);
+                    context.SaveChanges();
+                }
+                else
+                {
+                    return false;
+                    //return.. already exists
+                }
+            }
+
+            return true;
+        }
+
+        public bool DeleteQueue(BookingRequest request)
+        {
+            using (var context = new SpartanHotelsEntities())
+            {
+                var queue = context.Queues.FirstOrDefault(q => (q.ReservationID == request.BookingId));
+
+                if (queue != null)
+                {
+                    context.Queues.Remove(queue);
+                    context.SaveChanges();
+                }
+                else
+                {
+                    return false;
+                    //return.. invalid input, queue doesnt exists
+                }
+            }
+
+            return true;
+        }
+
         private static Customer AddCustomer(string firstName, string lastName, string emailId)
         {
             var response = new Customer();
