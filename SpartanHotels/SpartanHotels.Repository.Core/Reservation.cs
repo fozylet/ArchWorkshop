@@ -14,7 +14,7 @@ namespace SpartanHotels.Repository.Core
     
     public partial class Reservation
     {
-        public int ReservationID { get; set; }
+        public string ReservationID { get; set; }
         public Nullable<int> ConfirmationNum { get; set; }
         public Nullable<int> HotelRoomID { get; set; }
         public Nullable<int> CustomerID { get; set; }

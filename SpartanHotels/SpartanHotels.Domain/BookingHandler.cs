@@ -11,10 +11,12 @@ namespace SpartanHotels.Domain
     public class BookingHandler : IBooking, ICancellation
     {
         private IMasterRepository writer;
-
-        public BookingHandler(IMasterRepository injected)
+        private IEventRepository queue;
+        
+        public BookingHandler(IMasterRepository w, IEventRepository q)
         {
-            writer = injected;
+            writer = w;
+            queue = q;
         }
 
         public CancellationResponse Cancel(CancellationRequest request)
@@ -28,24 +30,12 @@ namespace SpartanHotels.Domain
 
         public BookingResponse Book(BookingRequest request)
         {
-            string strReservationId = Guid.NewGuid().ToString();
-            using (FileStream stream = new FileStream(Path.Combine(ConfigurationManager.AppSettings["BookingQueuePath"], strReservationId+".txt"), FileMode.CreateNew))
-            {
-                XmlSerializer serializer = new XmlSerializer(typeof(BookingRequest));
-                serializer.Serialize(stream, request);
-
-            }
-            return new BookingResponse()
-                {
-                    BookingStatus = BookingStatus.Booked,
-                    ReservationId = strReservationId,
-                    Guest = request.Guest
-                };
+            return queue.Push(request);
         }
 
         public BookingResponse Confirm(BookingRequest request)
         {
-            //return writer.AddBooking(request);
+            return writer.AddBooking(request);
             // Call DB Access and Confirm
             return new BookingResponse
             {

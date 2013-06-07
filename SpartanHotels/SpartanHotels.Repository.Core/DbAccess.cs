@@ -1,6 +1,5 @@
-﻿using System.Linq;
-using System.Linq.Expressions;
-using System.Data.Objects;
+﻿using System;
+using System.Linq;
 using SpartanHotels.Entities;
 
 namespace SpartanHotels.Repository.Core
@@ -37,16 +36,16 @@ namespace SpartanHotels.Repository.Core
                 if (aviReservations.Any())
                 {
                     var totalBooking = aviReservations.GroupBy(tb => new { tb.FromDate, tb.HotelRoomID }).Select(room => new
-                                    {
-                                        HotelRoomID = room.Key.HotelRoomID,
-                                        FromDate = room.Key.FromDate,
-                                        Total = room.Count()
-                                    }).AsQueryable().GroupBy(a => new { a.HotelRoomID }).Select(b => new
-                                    {
-                                        HotelRoomID = b.Key.HotelRoomID,
-                                        TotalBookedRooms = b.Max(c => c.Total)
+                    {
+                        room.Key.HotelRoomID,
+                        room.Key.FromDate,
+                        Total = room.Count()
+                    }).AsQueryable().GroupBy(a => new { a.HotelRoomID }).Select(b => new
+                    {
+                        b.Key.HotelRoomID,
+                        TotalBookedRooms = b.Max(c => c.Total)
 
-                                    }).AsQueryable();
+                    }).AsQueryable();
 
                     foreach (var avi in aviRooms)
                     {
@@ -59,16 +58,16 @@ namespace SpartanHotels.Repository.Core
                         if (avi.TotalRoomCount > roomsBooked)
                         {
                             response.Rooms.Add(new Availability()
-                                                    {
-                                                        Room = new Room
-                                                        {
-                                                            Id = avi.HotelRoomID.ToString(),
-                                                            Title = avi.RoomTypeID.ToString(),
-                                                            Rate = (decimal)avi.Rate
-                                                        },
+                            {
+                                Room = new SpartanHotels.Entities.Room
+                                {
+                                    Id = avi.HotelRoomID.ToString(),
+                                    Title = avi.RoomTypeID.ToString(),
+                                    Rate = (decimal)avi.Rate
+                                },
 
-                                                        AvailableCount = (int)avi.TotalRoomCount - roomsBooked
-                                                    });
+                                AvailableCount = (int)avi.TotalRoomCount - roomsBooked
+                            });
                         }
                     }
                 }
@@ -78,17 +77,18 @@ namespace SpartanHotels.Repository.Core
                     {
                         if (avi.TotalRoomCount > 0)
                         {
-                            response.Rooms.Add( new Availability()
-                               {
-                                   Room = new Room
-                                   {
-                                       Id = avi.HotelRoomID.ToString(),
-                                       Title = avi.RoomTypeID.ToString(),
-                                       Rate = (decimal)avi.Rate
-                                   },
+                            response.Rooms.Add(new Availability()
+                            {
 
-                                   AvailableCount = (int)avi.TotalRoomCount
-                               });
+                                Room = new Entities.Room
+                                {
+                                    Id = avi.HotelRoomID.ToString(),
+                                    Title = avi.RoomTypeID.ToString(),
+                                    Rate = (decimal)avi.Rate
+                                },
+
+                                AvailableCount = (int)avi.TotalRoomCount
+                            });
                         }
                     }
 
@@ -100,19 +100,94 @@ namespace SpartanHotels.Repository.Core
 
         public BookingResponse AddBooking(BookingRequest request)
         {
-            BookingResponse response = new BookingResponse();
+            var response = new BookingResponse();
+
             using (var context = new SpartanHotelsEntities())
             {
-                var eReservation = context.Reservations.Create();
+                var eHotel = (from hr in context.HotelRooms
+                              join ht in context.Hotels on hr.HotelID equals ht.HotelID
+                              where hr.HotelRoomID.ToString() == request.TravelDetails.HotelID
+                              select new
+                              {
+                                  hr.HotelID,
+                                  hr.HotelRoomID,
+                                  ht.HotelName,
+                                  ht.Locality,
+                                  ht.City
+                              }).FirstOrDefault();
 
-                //eReservation.ConfirmationId = reservationId;
+                if (eHotel != null)
+                {
+                    var availabilityResponse = GetAvailableRoomList(
+                        new AvailabilityRequest
+                        {
+                            City = eHotel.City,
+                            FromDate = request.TravelDetails.FromDate,
+                            ToDate = request.TravelDetails.ToDate,
+                            RequestedRoomCount = request.RequestedRooms.Count()
+                        });
 
-                //var aviRooms = GetAvailableRoom(request);
+                    var available = false;
+                    foreach (var rr in request.RequestedRooms)
+                    {
+                        if (availabilityResponse.Rooms.FirstOrDefault(ar => ar.Room.Title == rr.RequestedRoom.Title && ar.AvailableCount >= rr.RoomCount) != null)
+                        {
+                            available = true;
+                        }
+                        else
+                        {
+                            available = false;
+                            break;
+                        };
+                    }
 
-                //context.SaveChanges();
+                    if (available)
+                    {
+                        var eCustomer = GetCustomer(request.Guest.EMailAddress);
 
-                //response.ConfirmationId = eReservation.ConfirmationId;
-                //room number etc
+                        if (eCustomer == null)
+                        {
+                            eCustomer = new Customer
+                            {
+                                CustomerID = context.Customers.Max(c => c.CustomerID) + 1,
+                                FirstName = request.Guest.FirstName,
+                                LastName = request.Guest.LastName,
+                                Email = request.Guest.EMailAddress
+                            };
+
+                            context.Customers.Add(eCustomer);
+                        }
+
+                        var eReservation = new Reservation
+                        {
+                            ReservationID = request.BookingId,
+                            HotelRoomID = Convert.ToInt32(request.TravelDetails.HotelID),
+                            FromDate = request.TravelDetails.FromDate,
+                            ToDate = request.TravelDetails.ToDate,
+                            ConfirmationNum = context.Reservations.Max(c => c.ConfirmationNum) + 1,
+                            CreatedBy = "",
+                            CreatedDate = DateTime.Now,
+                            ModifiedBy = "",
+                            ModifiedDate = DateTime.Now,
+                            CustomerID = eCustomer.CustomerID,
+                            BookStatusID = (int)BookingStatus.Confirmed,
+                            Remarks = ""
+                        };
+
+                        foreach (var rm in request.RequestedRooms)
+                        {
+                            eReservation.HotelRoomID = Convert.ToInt32(rm.RequestedRoom.Id);
+
+                            context.Reservations.Add(eReservation);
+                        }
+
+                        context.SaveChanges();
+
+                        response.ConfirmationNumber = eReservation.ConfirmationNum.ToString();
+                        response.BookingStatus = (BookingStatus)eReservation.BookStatusID;
+                        response.Guest = new Entities.Customer { EMailAddress = eCustomer.Email, FirstName = eCustomer.FirstName, LastName = eCustomer.LastName };
+                    }
+                }
             }
 
             return response;
@@ -120,21 +195,64 @@ namespace SpartanHotels.Repository.Core
 
         public CancellationResponse CancelBooking(CancellationRequest request)
         {
-            CancellationResponse response = new CancellationResponse();
+            var response = new CancellationResponse();
             using (var context = new SpartanHotelsEntities())
             {
                 var userReservations = context.Reservations.Where(rs => (rs.ConfirmationNum.ToString() == request.ConfirmationNumber && rs.BookStatusID == (int)BookingStatus.Confirmed));
 
-                if (userReservations != null)
+                if (userReservations.Any())
                 {
-                    foreach(var reservation in userReservations)
+                    foreach (var reservation in userReservations)
                         reservation.BookStatusID = (int)BookingStatus.Cancelled;
-                    //context.UpdateObject(userReservations);
                     context.SaveChanges();
                 }
                 else
                 {
-                    //InvalidInput
+                    //return.. invalid input, confirmation doesnt exists
+                }
+            }
+
+            return response;
+        }
+
+        public BookingStatusResponse GetBookingStatus(BookingStatusRequest request)
+        {
+            var response = new BookingStatusResponse();
+            using (var context = new SpartanHotelsEntities())
+            {
+                var userReservation = context.Reservations.FirstOrDefault(rs => (rs.ReservationID == request.BookingNumber));
+
+                if (userReservation != null)
+                {
+                    response.BookingNumber = userReservation.ReservationID;
+                    response.ConfirmationNumber = userReservation.ConfirmationNum.ToString();
+                    response.StatusCode = (BookingStatus)userReservation.BookStatusID;
+                }
+                else
+                {
+                    //return.. invalid input, reservation doesnt exists
+                }
+            }
+
+            return response;
+        }
+
+        private static Customer GetCustomer(string emailId)
+        {
+            var response = new Customer();
+            using (var context = new SpartanHotelsEntities())
+            {
+                var customer = context.Customers.FirstOrDefault(c => (c.Email == emailId));
+
+                if (customer != null)
+                {
+                    response.CustomerID = customer.CustomerID;
+                    response.FirstName = customer.FirstName;
+                    response.LastName = customer.LastName;
+                }
+                else
+                {
+                    return null;
                 }
             }
 
