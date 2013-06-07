@@ -26,12 +26,12 @@ namespace SpartanHotels.Test
             var request = new BookingRequest
             {
                 BookingId = "",
-                Guest = new Customer { EMailAddress = "", FirstName = "", LastName = "" },
+                Guest = new Customer { EMailAddress = "mudlappa_n@dell.com", FirstName = "Mudlappa", LastName = "Narayanappa" },
                 RequestedRooms = new List<RoomRequest>
                         {
                             new RoomRequest
                                 {
-                                    RequestedRoom = new Room {Id = "", Description = "", Title = ""},
+                                    RequestedRoom = new Room {Id = "1", Description = "", Title = "Delux Room"},
                                     RoomCount = 2
                                 }
                         },
@@ -47,7 +47,7 @@ namespace SpartanHotels.Test
         [TestMethod]
         public void TestCancellationRequest()
         {
-            var request = new CancellationRequest { BookingNumber = "", ConfirmationNumber = "", LastName = "" };
+            var request = new CancellationRequest { BookingNumber = "D35F673C-728F-447C-9872-F6F8D05CE0C7", ConfirmationNumber = "100", LastName = "Narayanappa" };
             var response = new WorkerRepository().CancelBooking(request);
 
             Assert.IsNotNull(response);
@@ -56,7 +56,7 @@ namespace SpartanHotels.Test
         [TestMethod]
         public void TestReservationStatus()
         {
-            var request = new BookingStatusRequest { BookingNumber = "", LastName = "" };
+            var request = new BookingStatusRequest { BookingNumber = "D35F673C-728F-447C-9872-F6F8D05CE0C7", LastName = "Narayanappa" };
             var response = new WorkerRepository().GetBookingStatus(request);
 
             Assert.IsNotNull(response);
