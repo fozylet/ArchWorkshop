@@ -31,6 +31,7 @@ namespace SpartanHotels.Ux
                     scan.AddAllTypesOf<ICancellation>();
                     scan.AddAllTypesOf<ISnapshotRepository>();
                     scan.AddAllTypesOf<IMasterRepository>();
+                    scan.AddAllTypesOf<IEventRepository>();
                 });
             });
         }

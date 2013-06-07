@@ -36,16 +36,16 @@ namespace SpartanHotels.Repository.Core
                 if (aviReservations.Any())
                 {
                     var totalBooking = aviReservations.GroupBy(tb => new { tb.FromDate, tb.HotelRoomID }).Select(room => new
-                    {
-                        room.Key.HotelRoomID,
-                        room.Key.FromDate,
-                        Total = room.Count()
-                    }).AsQueryable().GroupBy(a => new { a.HotelRoomID }).Select(b => new
-                    {
-                        b.Key.HotelRoomID,
-                        TotalBookedRooms = b.Max(c => c.Total)
+                                    {
+                                        room.Key.HotelRoomID,
+                                        room.Key.FromDate,
+                                        Total = room.Count()
+                                    }).AsQueryable().GroupBy(a => new { a.HotelRoomID }).Select(b => new
+                                    {
+                                        b.Key.HotelRoomID,
+                                        TotalBookedRooms = b.Max(c => c.Total)
 
-                    }).AsQueryable();
+                                    }).AsQueryable();
 
                     foreach (var avi in aviRooms)
                     {
@@ -58,16 +58,16 @@ namespace SpartanHotels.Repository.Core
                         if (avi.TotalRoomCount > roomsBooked)
                         {
                             response.Rooms.Add(new Availability()
-                            {
-                                Room = new SpartanHotels.Entities.Room
-                                {
-                                    Id = avi.HotelRoomID.ToString(),
-                                    Title = avi.RoomTypeID.ToString(),
-                                    Rate = (decimal)avi.Rate
-                                },
+                                                    {
+                                                        Room = new SpartanHotels.Entities.Room
+                                                        {
+                                                            Id = avi.HotelRoomID.ToString(),
+                                                            Title = avi.RoomTypeID.ToString(),
+                                                            Rate = (decimal)avi.Rate
+                                                        },
 
-                                AvailableCount = (int)avi.TotalRoomCount - roomsBooked
-                            });
+                                                        AvailableCount = (int)avi.TotalRoomCount - roomsBooked
+                                                    });
                         }
                     }
                 }
@@ -78,17 +78,17 @@ namespace SpartanHotels.Repository.Core
                         if (avi.TotalRoomCount > 0)
                         {
                             response.Rooms.Add(new Availability()
-                            {
+                               {
 
-                                Room = new Entities.Room
-                                {
-                                    Id = avi.HotelRoomID.ToString(),
-                                    Title = avi.RoomTypeID.ToString(),
-                                    Rate = (decimal)avi.Rate
-                                },
+                                   Room = new Entities.Room
+                                   {
+                                       Id = avi.HotelRoomID.ToString(),
+                                       Title = avi.RoomTypeID.ToString(),
+                                       Rate = (decimal)avi.Rate
+                                   },
 
-                                AvailableCount = (int)avi.TotalRoomCount
-                            });
+                                   AvailableCount = (int)avi.TotalRoomCount
+                               });
                         }
                     }
 
@@ -110,7 +110,7 @@ namespace SpartanHotels.Repository.Core
                               select new
                               {
                                   hr.HotelID,
-                                  hr.HotelRoomID,
+                                  hr.HotelRoomID, 
                                   ht.HotelName,
                                   ht.Locality,
                                   ht.City
@@ -148,31 +148,31 @@ namespace SpartanHotels.Repository.Core
                         if (eCustomer == null)
                         {
                             eCustomer = new Customer
-                            {
-                                CustomerID = context.Customers.Max(c => c.CustomerID) + 1,
-                                FirstName = request.Guest.FirstName,
-                                LastName = request.Guest.LastName,
-                                Email = request.Guest.EMailAddress
-                            };
+                                {
+                                    CustomerID = context.Customers.Max(c => c.CustomerID) + 1,
+                                    FirstName = request.Guest.FirstName,
+                                    LastName = request.Guest.LastName,
+                                    Email = request.Guest.EMailAddress
+                                };
 
                             context.Customers.Add(eCustomer);
                         }
 
                         var eReservation = new Reservation
-                        {
-                            ReservationID = request.BookingId,
-                            HotelRoomID = Convert.ToInt32(request.TravelDetails.HotelID),
-                            FromDate = request.TravelDetails.FromDate,
-                            ToDate = request.TravelDetails.ToDate,
-                            ConfirmationNum = context.Reservations.Max(c => c.ConfirmationNum) + 1,
-                            CreatedBy = "",
-                            CreatedDate = DateTime.Now,
-                            ModifiedBy = "",
-                            ModifiedDate = DateTime.Now,
-                            CustomerID = eCustomer.CustomerID,
-                            BookStatusID = (int)BookingStatus.Confirmed,
-                            Remarks = ""
-                        };
+                            {
+                                ReservationID = request.BookingId,
+                                HotelRoomID = Convert.ToInt32(request.TravelDetails.HotelID),
+                                FromDate = request.TravelDetails.FromDate,
+                                ToDate = request.TravelDetails.ToDate,
+                                ConfirmationNum = context.Reservations.Max(c => c.ConfirmationNum) + 1,
+                                CreatedBy = "",
+                                CreatedDate = DateTime.Now,
+                                ModifiedBy = "",
+                                ModifiedDate = DateTime.Now,
+                                CustomerID = eCustomer.CustomerID,
+                                BookStatusID = (int)BookingStatus.Confirmed,
+                                Remarks = ""
+                            };
 
                         foreach (var rm in request.RequestedRooms)
                         {
@@ -203,7 +203,7 @@ namespace SpartanHotels.Repository.Core
                 if (userReservations.Any())
                 {
                     foreach (var reservation in userReservations)
-                        reservation.BookStatusID = (int)BookingStatus.Cancelled;
+                        reservation.BookStatusID = (int) BookingStatus.Cancelled;
                     context.SaveChanges();
                 }
                 else

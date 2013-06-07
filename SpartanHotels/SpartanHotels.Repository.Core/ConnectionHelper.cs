@@ -1,6 +1,4 @@
-﻿using System;
-using System.Configuration;
-using System.Data.EntityClient;
+﻿using System.Configuration;
 
 namespace SpartanHotels.Repository.Core
 {
@@ -15,15 +13,6 @@ namespace SpartanHotels.Repository.Core
         public static string SpartanHotelsSnapshotConnectionString
         {
             get { return ConfigurationManager.ConnectionStrings["SpartanHotelsEntities"].ConnectionString; }
-        }
-
-        private static string ConvertConfigStagingToEntityConnection(string connectionString)
-        {
-            EntityConnectionStringBuilder ecb = new EntityConnectionStringBuilder();
-            ecb.Metadata = "res://*/";
-            ecb.Provider = "System.Data.SqlClient";
-            ecb.ProviderConnectionString = connectionString;
-            return ecb.ConnectionString;
         }
     }
 }

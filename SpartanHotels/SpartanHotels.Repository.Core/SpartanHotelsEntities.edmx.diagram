@@ -9,14 +9,16 @@
         <EntityTypeShape EntityType="SpartanHotelsModel.Customer" Width="1.5" PointX="3" PointY="7" IsExpanded="true" />
         <EntityTypeShape EntityType="SpartanHotelsModel.Hotel" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SpartanHotelsModel.HotelRoom" Width="1.5" PointX="3" PointY="1.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="SpartanHotelsModel.Policy" Width="1.5" PointX="5.75" PointY="5.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="SpartanHotelsModel.Reservation" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="SpartanHotelsModel.Policy" Width="1.5" PointX="7.75" PointY="5.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SpartanHotelsModel.RoomType" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SpartanHotelsModel.sysdiagram" Width="1.5" PointX="7.75" PointY="3.75" IsExpanded="true" />
-        <AssociationConnector Association="SpartanHotelsModel.FK_Reservation_BookingStatus" ManuallyRouted="false" />
-        <AssociationConnector Association="SpartanHotelsModel.FK_Reservation_Customer" ManuallyRouted="false" />
         <AssociationConnector Association="SpartanHotelsModel.FK_HotelRooms_Hotel" ManuallyRouted="false" />
-        <AssociationConnector Association="SpartanHotelsModel.FK_Reservation_HotelRooms" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="SpartanHotelsModel.Room" Width="1.5" PointX="2.9412799807923284" PointY="23.03961783230287" />
+        <EntityTypeShape EntityType="SpartanHotelsModel.Sequence" Width="1.5" PointX="1.7988774002524455" PointY="5.4051110620634217" />
+        <EntityTypeShape EntityType="SpartanHotelsModel.Reservation" Width="1.5" PointX="5.625" PointY="1.375" />
+        <AssociationConnector Association="SpartanHotelsModel.FK_Reservation_BookingStatus" />
+        <AssociationConnector Association="SpartanHotelsModel.FK_Reservation_Customer" />
+        <AssociationConnector Association="SpartanHotelsModel.FK_Reservation_HotelRooms" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
