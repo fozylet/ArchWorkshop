@@ -9,10 +9,11 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>SpartanHotels.Repository.Core</RootNamespace>
     <AssemblyName>SpartanHotels.Repository.Core</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -68,6 +69,9 @@
       <DependentUpon>SpartanHotelsEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Queue.cs">
+      <DependentUpon>SpartanHotelsEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="Reservation.cs">
       <DependentUpon>SpartanHotelsEntities.tt</DependentUpon>
     </Compile>

@@ -12,16 +12,11 @@ namespace SpartanHotels.Repository.Core
     using System;
     using System.Collections.Generic;
     
-    public partial class BookingStatu
+    public partial class Queue
     {
-        public BookingStatu()
-        {
-            this.Reservations = new HashSet<Reservation>();
-        }
-    
-        public int BookStatusID { get; set; }
-        public string BookStatusDescription { get; set; }
-    
-        public virtual ICollection<Reservation> Reservations { get; set; }
+        public string ID { get; set; }
+        public string ReservationID { get; set; }
+        public byte[] request { get; set; }
+        public Nullable<bool> status { get; set; }
     }
 }

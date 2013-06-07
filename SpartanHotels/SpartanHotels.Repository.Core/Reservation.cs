@@ -14,10 +14,11 @@ namespace SpartanHotels.Repository.Core
     
     public partial class Reservation
     {
-        public string ReservationID { get; set; }
+        public long ID { get; set; }
+        public string BookingNum { get; set; }
         public Nullable<int> ConfirmationNum { get; set; }
         public Nullable<int> HotelRoomID { get; set; }
-        public Nullable<int> CustomerID { get; set; }
+        public Nullable<long> CustomerID { get; set; }
         public Nullable<System.DateTime> FromDate { get; set; }
         public Nullable<System.DateTime> ToDate { get; set; }
         public Nullable<int> BookStatusID { get; set; }

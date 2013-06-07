@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using SpartanHotels.Entities;
+﻿using SpartanHotels.Entities;
 using SpartanHotels.Repository.Contracts;
 using SpartanHotels.Repository.Core;
 

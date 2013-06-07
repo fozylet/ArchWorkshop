@@ -1,32 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
   <!-- EF Runtime content -->
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="SpartanHotelsModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="SpartanHotelsModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
         <EntityContainer Name="SpartanHotelsModelStoreContainer">
           <EntitySet Name="BookingStatus" EntityType="SpartanHotelsModel.Store.BookingStatus" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Customer" EntityType="SpartanHotelsModel.Store.Customer" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Hotel" EntityType="SpartanHotelsModel.Store.Hotel" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="HotelRooms" EntityType="SpartanHotelsModel.Store.HotelRooms" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Policy" EntityType="SpartanHotelsModel.Store.Policy" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Reservation" EntityType="SpartanHotelsModel.Store.Reservation" store:Type="Tables" store:Schema="dbo" store:Name="Reservation">
-            <DefiningQuery>SELECT 
-      [Reservation].[ReservationID] AS [ReservationID], 
-      [Reservation].[ConfirmationNum] AS [ConfirmationNum], 
-      [Reservation].[HotelRoomID] AS [HotelRoomID], 
-      [Reservation].[CustomerID] AS [CustomerID], 
-      [Reservation].[FromDate] AS [FromDate], 
-      [Reservation].[ToDate] AS [ToDate], 
-      [Reservation].[BookStatusID] AS [BookStatusID], 
-      [Reservation].[Remarks] AS [Remarks], 
-      [Reservation].[CreatedBy] AS [CreatedBy], 
-      [Reservation].[CreatedDate] AS [CreatedDate], 
-      [Reservation].[ModifiedBy] AS [ModifiedBy], 
-      [Reservation].[ModifiedDate] AS [ModifiedDate]
-      FROM [dbo].[Reservation] AS [Reservation]</DefiningQuery>
-          </EntitySet>
+          <EntitySet Name="Queue" EntityType="SpartanHotelsModel.Store.Queue" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Reservation" EntityType="SpartanHotelsModel.Store.Reservation" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Room" EntityType="SpartanHotelsModel.Store.Room" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="RoomType" EntityType="SpartanHotelsModel.Store.RoomType" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Sequence" EntityType="SpartanHotelsModel.Store.Sequence" store:Type="Tables" Schema="dbo" />
@@ -59,7 +45,7 @@
           <Key>
             <PropertyRef Name="CustomerID" />
           </Key>
-          <Property Name="CustomerID" Type="int" Nullable="false" />
+          <Property Name="CustomerID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="FirstName" Type="nvarchar" Nullable="false" MaxLength="250" />
           <Property Name="LastName" Type="nvarchar" Nullable="false" MaxLength="250" />
           <Property Name="Email" Type="nvarchar" MaxLength="250" />
@@ -94,17 +80,24 @@
           <Property Name="ApplicableFrom" Type="date" />
           <Property Name="ApplicableTo" Type="date" />
         </EntityType>
-        <!--Errors Found During Generation:
-      warning 6002: The table/view 'SpartanHotels.dbo.Reservation' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
-      -->
+        <EntityType Name="Queue">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="ReservationID" Type="varchar" MaxLength="50" />
+          <Property Name="request" Type="varbinary(max)" />
+          <Property Name="status" Type="bit" />
+        </EntityType>
         <EntityType Name="Reservation">
           <Key>
-            <PropertyRef Name="ReservationID" />
+            <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ReservationID" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="ID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="BookingNum" Type="varchar" Nullable="false" MaxLength="50" />
           <Property Name="ConfirmationNum" Type="int" />
           <Property Name="HotelRoomID" Type="int" />
-          <Property Name="CustomerID" Type="int" />
+          <Property Name="CustomerID" Type="bigint" />
           <Property Name="FromDate" Type="date" />
           <Property Name="ToDate" Type="date" />
           <Property Name="BookStatusID" Type="int" />
@@ -198,22 +191,19 @@
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="SpartanHotelsModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="SpartanHotelsModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns="http://schemas.microsoft.com/ado/2008/09/edm" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
         <EntityContainer Name="SpartanHotelsEntities" p1:LazyLoadingEnabled="true">
           <EntitySet Name="BookingStatus" EntityType="SpartanHotelsModel.BookingStatu" />
           <EntitySet Name="Customers" EntityType="SpartanHotelsModel.Customer" />
           <EntitySet Name="Hotels" EntityType="SpartanHotelsModel.Hotel" />
           <EntitySet Name="HotelRooms" EntityType="SpartanHotelsModel.HotelRoom" />
           <EntitySet Name="Policies" EntityType="SpartanHotelsModel.Policy" />
-          <EntitySet Name="RoomTypes" EntityType="SpartanHotelsModel.RoomType" />
-          <EntitySet Name="sysdiagrams" EntityType="SpartanHotelsModel.sysdiagram" />
-          <AssociationSet Name="FK_HotelRooms_Hotel" Association="SpartanHotelsModel.FK_HotelRooms_Hotel">
-            <End Role="Hotel" EntitySet="Hotels" />
-            <End Role="HotelRooms" EntitySet="HotelRooms" />
-          </AssociationSet>
-          <EntitySet Name="Rooms" EntityType="SpartanHotelsModel.Room" />
-          <EntitySet Name="Sequences" EntityType="SpartanHotelsModel.Sequence" />
+          <EntitySet Name="Queues" EntityType="SpartanHotelsModel.Queue" />
           <EntitySet Name="Reservations" EntityType="SpartanHotelsModel.Reservation" />
+          <EntitySet Name="Rooms" EntityType="SpartanHotelsModel.Room" />
+          <EntitySet Name="RoomTypes" EntityType="SpartanHotelsModel.RoomType" />
+          <EntitySet Name="Sequences" EntityType="SpartanHotelsModel.Sequence" />
+          <EntitySet Name="sysdiagrams" EntityType="SpartanHotelsModel.sysdiagram" />
           <AssociationSet Name="FK_Reservation_BookingStatus" Association="SpartanHotelsModel.FK_Reservation_BookingStatus">
             <End Role="BookingStatu" EntitySet="BookingStatus" />
             <End Role="Reservation" EntitySet="Reservations" />
@@ -221,6 +211,10 @@
           <AssociationSet Name="FK_Reservation_Customer" Association="SpartanHotelsModel.FK_Reservation_Customer">
             <End Role="Customer" EntitySet="Customers" />
             <End Role="Reservation" EntitySet="Reservations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HotelRooms_Hotel" Association="SpartanHotelsModel.FK_HotelRooms_Hotel">
+            <End Role="Hotel" EntitySet="Hotels" />
+            <End Role="HotelRoom" EntitySet="HotelRooms" />
           </AssociationSet>
           <AssociationSet Name="FK_Reservation_HotelRooms" Association="SpartanHotelsModel.FK_Reservation_HotelRooms">
             <End Role="HotelRoom" EntitySet="HotelRooms" />
@@ -231,106 +225,71 @@
           <Key>
             <PropertyRef Name="BookStatusID" />
           </Key>
-          <Property Name="BookStatusID" Type="Int32" Nullable="false" />
-          <Property Name="BookStatusDescription" Type="String" MaxLength="250" Unicode="true" FixedLength="false" />
+          <Property Type="Int32" Name="BookStatusID" Nullable="false" />
+          <Property Type="String" Name="BookStatusDescription" MaxLength="250" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Reservations" Relationship="SpartanHotelsModel.FK_Reservation_BookingStatus" FromRole="BookingStatu" ToRole="Reservation" />
         </EntityType>
         <EntityType Name="Customer">
           <Key>
             <PropertyRef Name="CustomerID" />
           </Key>
-          <Property Name="CustomerID" Type="Int32" Nullable="false" />
-          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="250" Unicode="true" FixedLength="false" />
-          <Property Name="LastName" Type="String" Nullable="false" MaxLength="250" Unicode="true" FixedLength="false" />
-          <Property Name="Email" Type="String" MaxLength="250" Unicode="true" FixedLength="false" />
+          <Property Type="Int64" Name="CustomerID" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="FirstName" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="LastName" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Email" MaxLength="250" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Reservations" Relationship="SpartanHotelsModel.FK_Reservation_Customer" FromRole="Customer" ToRole="Reservation" />
         </EntityType>
         <EntityType Name="Hotel">
           <Key>
             <PropertyRef Name="HotelID" />
           </Key>
-          <Property Name="HotelID" Type="Int32" Nullable="false" />
-          <Property Name="HotelName" Type="String" MaxLength="500" Unicode="true" FixedLength="false" />
-          <Property Name="City" Type="String" MaxLength="250" Unicode="true" FixedLength="false" />
-          <Property Name="Locality" Type="String" MaxLength="250" Unicode="true" FixedLength="false" />
-          <Property Name="Address" Type="String" MaxLength="500" Unicode="true" FixedLength="false" />
-          <NavigationProperty Name="HotelRooms" Relationship="SpartanHotelsModel.FK_HotelRooms_Hotel" FromRole="Hotel" ToRole="HotelRooms" />
+          <Property Type="Int32" Name="HotelID" Nullable="false" />
+          <Property Type="String" Name="HotelName" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="City" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Locality" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Address" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="HotelRooms" Relationship="SpartanHotelsModel.FK_HotelRooms_Hotel" FromRole="Hotel" ToRole="HotelRoom" />
         </EntityType>
         <EntityType Name="HotelRoom">
           <Key>
             <PropertyRef Name="HotelRoomID" />
           </Key>
-          <Property Name="HotelRoomID" Type="Int32" Nullable="false" />
-          <Property Name="HotelID" Type="Int32" />
-          <Property Name="RoomTypeID" Type="Int32" />
-          <Property Name="Rate" Type="Decimal" Precision="10" Scale="2" />
-          <Property Name="TotalRoomCount" Type="Int32" />
-          <NavigationProperty Name="Hotel" Relationship="SpartanHotelsModel.FK_HotelRooms_Hotel" FromRole="HotelRooms" ToRole="Hotel" />
+          <Property Type="Int32" Name="HotelRoomID" Nullable="false" />
+          <Property Type="Int32" Name="HotelID" />
+          <Property Type="Int32" Name="RoomTypeID" />
+          <Property Type="Decimal" Name="Rate" Precision="10" Scale="2" />
+          <Property Type="Int32" Name="TotalRoomCount" />
+          <NavigationProperty Name="Hotel" Relationship="SpartanHotelsModel.FK_HotelRooms_Hotel" FromRole="HotelRoom" ToRole="Hotel" />
           <NavigationProperty Name="Reservations" Relationship="SpartanHotelsModel.FK_Reservation_HotelRooms" FromRole="HotelRoom" ToRole="Reservation" />
         </EntityType>
         <EntityType Name="Policy">
           <Key>
             <PropertyRef Name="PolicyID" />
           </Key>
-          <Property Name="PolicyID" Type="Int32" Nullable="false" />
-          <Property Name="PolicyDescription" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
-          <Property Name="Percentage" Type="Decimal" Precision="18" Scale="0" />
-          <Property Name="ApplicableFrom" Type="DateTime" Precision="0" />
-          <Property Name="ApplicableTo" Type="DateTime" Precision="0" />
+          <Property Type="Int32" Name="PolicyID" Nullable="false" />
+          <Property Type="String" Name="PolicyDescription" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="Percentage" Precision="18" Scale="0" />
+          <Property Type="DateTime" Name="ApplicableFrom" Precision="0" />
+          <Property Type="DateTime" Name="ApplicableTo" Precision="0" />
         </EntityType>
-        <EntityType Name="RoomType">
+        <EntityType Name="Queue">
           <Key>
-            <PropertyRef Name="RoomTypeID" />
+            <PropertyRef Name="ID" />
           </Key>
-          <Property Name="RoomTypeID" Type="Int32" Nullable="false" />
-          <Property Name="RoomTypeDescription" Type="String" MaxLength="250" Unicode="true" FixedLength="false" />
-        </EntityType>
-        <EntityType Name="sysdiagram">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
-          <Property Name="principal_id" Type="Int32" Nullable="false" />
-          <Property Name="diagram_id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="Int32" />
-          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
-        </EntityType>
-        <Association Name="FK_HotelRooms_Hotel">
-          <End Role="Hotel" Type="SpartanHotelsModel.Hotel" Multiplicity="0..1" />
-          <End Role="HotelRooms" Type="SpartanHotelsModel.HotelRoom" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Hotel">
-              <PropertyRef Name="HotelID" />
-            </Principal>
-            <Dependent Role="HotelRooms">
-              <PropertyRef Name="HotelID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityType Name="Room">
-          <Key>
-            <PropertyRef Name="RoomNum" />
-          </Key>
-          <Property Type="Int32" Name="RoomNum" Nullable="false" />
-          <Property Type="Int32" Name="HotelRoomID" Nullable="false" />
-          <Property Type="String" Name="Status" MaxLength="50" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="Sequence">
-          <Key>
-            <PropertyRef Name="NumberScemeKey" />
-          </Key>
-          <Property Type="String" Name="NumberScemeKey" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Type="Int32" Name="CurrentNum" />
-          <Property Type="Binary" Name="Prefix" MaxLength="10" FixedLength="false" />
+          <Property Type="String" Name="ID" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ReservationID" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Binary" Name="request" MaxLength="Max" FixedLength="false" />
+          <Property Type="Boolean" Name="status" />
         </EntityType>
         <EntityType Name="Reservation">
           <Key>
-            <PropertyRef Name="ReservationID" />
+            <PropertyRef Name="ID" />
           </Key>
-          <Property Type="String" Name="ReservationID" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Int64" Name="ID" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="BookingNum" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Type="Int32" Name="ConfirmationNum" />
           <Property Type="Int32" Name="HotelRoomID" />
-          <Property Type="Int32" Name="CustomerID" />
+          <Property Type="Int64" Name="CustomerID" />
           <Property Type="DateTime" Name="FromDate" Precision="0" />
           <Property Type="DateTime" Name="ToDate" Precision="0" />
           <Property Type="Int32" Name="BookStatusID" />
@@ -342,6 +301,39 @@
           <NavigationProperty Name="BookingStatu" Relationship="SpartanHotelsModel.FK_Reservation_BookingStatus" FromRole="Reservation" ToRole="BookingStatu" />
           <NavigationProperty Name="Customer" Relationship="SpartanHotelsModel.FK_Reservation_Customer" FromRole="Reservation" ToRole="Customer" />
           <NavigationProperty Name="HotelRoom" Relationship="SpartanHotelsModel.FK_Reservation_HotelRooms" FromRole="Reservation" ToRole="HotelRoom" />
+        </EntityType>
+        <EntityType Name="Room">
+          <Key>
+            <PropertyRef Name="RoomNum" />
+          </Key>
+          <Property Type="Int32" Name="RoomNum" Nullable="false" />
+          <Property Type="Int32" Name="HotelRoomID" Nullable="false" />
+          <Property Type="String" Name="Status" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="RoomType">
+          <Key>
+            <PropertyRef Name="RoomTypeID" />
+          </Key>
+          <Property Type="Int32" Name="RoomTypeID" Nullable="false" />
+          <Property Type="String" Name="RoomTypeDescription" MaxLength="250" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Sequence">
+          <Key>
+            <PropertyRef Name="NumberScemeKey" />
+          </Key>
+          <Property Type="String" Name="NumberScemeKey" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="CurrentNum" />
+          <Property Type="Binary" Name="Prefix" MaxLength="10" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Type="String" Name="name" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="principal_id" Nullable="false" />
+          <Property Type="Int32" Name="diagram_id" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="version" />
+          <Property Type="Binary" Name="definition" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <Association Name="FK_Reservation_BookingStatus">
           <End Type="SpartanHotelsModel.BookingStatu" Role="BookingStatu" Multiplicity="0..1" />
@@ -367,6 +359,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_HotelRooms_Hotel">
+          <End Type="SpartanHotelsModel.Hotel" Role="Hotel" Multiplicity="0..1" />
+          <End Type="SpartanHotelsModel.HotelRoom" Role="HotelRoom" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hotel">
+              <PropertyRef Name="HotelID" />
+            </Principal>
+            <Dependent Role="HotelRoom">
+              <PropertyRef Name="HotelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Reservation_HotelRooms">
           <End Type="SpartanHotelsModel.HotelRoom" Role="HotelRoom" Multiplicity="0..1" />
           <End Type="SpartanHotelsModel.Reservation" Role="Reservation" Multiplicity="*" />
@@ -379,97 +383,70 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
-      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="SpartanHotelsModelStoreContainer" CdmEntityContainer="SpartanHotelsEntities">
           <EntitySetMapping Name="BookingStatus">
             <EntityTypeMapping TypeName="SpartanHotelsModel.BookingStatu">
               <MappingFragment StoreEntitySet="BookingStatus">
-                <ScalarProperty Name="BookStatusID" ColumnName="BookStatusID" />
                 <ScalarProperty Name="BookStatusDescription" ColumnName="BookStatusDescription" />
+                <ScalarProperty Name="BookStatusID" ColumnName="BookStatusID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Customers">
             <EntityTypeMapping TypeName="SpartanHotelsModel.Customer">
               <MappingFragment StoreEntitySet="Customer">
-                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Hotels">
             <EntityTypeMapping TypeName="SpartanHotelsModel.Hotel">
               <MappingFragment StoreEntitySet="Hotel">
-                <ScalarProperty Name="HotelID" ColumnName="HotelID" />
-                <ScalarProperty Name="HotelName" ColumnName="HotelName" />
-                <ScalarProperty Name="City" ColumnName="City" />
-                <ScalarProperty Name="Locality" ColumnName="Locality" />
                 <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Locality" ColumnName="Locality" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="HotelName" ColumnName="HotelName" />
+                <ScalarProperty Name="HotelID" ColumnName="HotelID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="HotelRooms">
             <EntityTypeMapping TypeName="SpartanHotelsModel.HotelRoom">
               <MappingFragment StoreEntitySet="HotelRooms">
-                <ScalarProperty Name="HotelRoomID" ColumnName="HotelRoomID" />
-                <ScalarProperty Name="HotelID" ColumnName="HotelID" />
-                <ScalarProperty Name="RoomTypeID" ColumnName="RoomTypeID" />
-                <ScalarProperty Name="Rate" ColumnName="Rate" />
                 <ScalarProperty Name="TotalRoomCount" ColumnName="TotalRoomCount" />
+                <ScalarProperty Name="Rate" ColumnName="Rate" />
+                <ScalarProperty Name="RoomTypeID" ColumnName="RoomTypeID" />
+                <ScalarProperty Name="HotelID" ColumnName="HotelID" />
+                <ScalarProperty Name="HotelRoomID" ColumnName="HotelRoomID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Policies">
             <EntityTypeMapping TypeName="SpartanHotelsModel.Policy">
               <MappingFragment StoreEntitySet="Policy">
-                <ScalarProperty Name="PolicyID" ColumnName="PolicyID" />
-                <ScalarProperty Name="PolicyDescription" ColumnName="PolicyDescription" />
-                <ScalarProperty Name="Percentage" ColumnName="Percentage" />
-                <ScalarProperty Name="ApplicableFrom" ColumnName="ApplicableFrom" />
                 <ScalarProperty Name="ApplicableTo" ColumnName="ApplicableTo" />
+                <ScalarProperty Name="ApplicableFrom" ColumnName="ApplicableFrom" />
+                <ScalarProperty Name="Percentage" ColumnName="Percentage" />
+                <ScalarProperty Name="PolicyDescription" ColumnName="PolicyDescription" />
+                <ScalarProperty Name="PolicyID" ColumnName="PolicyID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="RoomTypes">
-            <EntityTypeMapping TypeName="SpartanHotelsModel.RoomType">
-              <MappingFragment StoreEntitySet="RoomType">
-                <ScalarProperty Name="RoomTypeID" ColumnName="RoomTypeID" />
-                <ScalarProperty Name="RoomTypeDescription" ColumnName="RoomTypeDescription" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="SpartanHotelsModel.sysdiagram">
-              <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Rooms">
-            <EntityTypeMapping TypeName="SpartanHotelsModel.Room">
-              <MappingFragment StoreEntitySet="Room">
-                <ScalarProperty Name="Status" ColumnName="Status" />
-                <ScalarProperty Name="HotelRoomID" ColumnName="HotelRoomID" />
-                <ScalarProperty Name="RoomNum" ColumnName="RoomNum" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Sequences">
-            <EntityTypeMapping TypeName="SpartanHotelsModel.Sequence">
-              <MappingFragment StoreEntitySet="Sequence">
-                <ScalarProperty Name="Prefix" ColumnName="Prefix" />
-                <ScalarProperty Name="CurrentNum" ColumnName="CurrentNum" />
-                <ScalarProperty Name="NumberScemeKey" ColumnName="NumberScemeKey" />
+          <EntitySetMapping Name="Queues">
+            <EntityTypeMapping TypeName="SpartanHotelsModel.Queue">
+              <MappingFragment StoreEntitySet="Queue">
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="request" ColumnName="request" />
+                <ScalarProperty Name="ReservationID" ColumnName="ReservationID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -487,7 +464,45 @@
                 <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
                 <ScalarProperty Name="HotelRoomID" ColumnName="HotelRoomID" />
                 <ScalarProperty Name="ConfirmationNum" ColumnName="ConfirmationNum" />
-                <ScalarProperty Name="ReservationID" ColumnName="ReservationID" />
+                <ScalarProperty Name="BookingNum" ColumnName="BookingNum" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rooms">
+            <EntityTypeMapping TypeName="SpartanHotelsModel.Room">
+              <MappingFragment StoreEntitySet="Room">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="HotelRoomID" ColumnName="HotelRoomID" />
+                <ScalarProperty Name="RoomNum" ColumnName="RoomNum" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RoomTypes">
+            <EntityTypeMapping TypeName="SpartanHotelsModel.RoomType">
+              <MappingFragment StoreEntitySet="RoomType">
+                <ScalarProperty Name="RoomTypeDescription" ColumnName="RoomTypeDescription" />
+                <ScalarProperty Name="RoomTypeID" ColumnName="RoomTypeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sequences">
+            <EntityTypeMapping TypeName="SpartanHotelsModel.Sequence">
+              <MappingFragment StoreEntitySet="Sequence">
+                <ScalarProperty Name="Prefix" ColumnName="Prefix" />
+                <ScalarProperty Name="CurrentNum" ColumnName="CurrentNum" />
+                <ScalarProperty Name="NumberScemeKey" ColumnName="NumberScemeKey" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="SpartanHotelsModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -496,7 +511,7 @@
     </edmx:Mappings>
   </edmx:Runtime>
   <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
-  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
     <Connection>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
@@ -511,6 +526,6 @@
       </DesignerInfoPropertySet>
     </Options>
     <!-- Diagram content (shape and connector positions) -->
-    <Diagrams></Diagrams>
+    <Diagrams />
   </Designer>
 </edmx:Edmx>

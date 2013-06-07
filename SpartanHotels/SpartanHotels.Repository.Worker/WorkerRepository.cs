@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using SpartanHotels.Entities;
 using SpartanHotels.Repository.Contracts;
 using SpartanHotels.Repository.Core;
@@ -18,6 +14,20 @@ namespace SpartanHotels.Repository.Worker
             var dbAccess = new DbAccess();
 
             return dbAccess.AddBooking(request);
+        }
+
+        public CancellationResponse CancelBooking(CancellationRequest request)
+        {
+            var dbAccess = new DbAccess();
+
+            return dbAccess.CancelBooking(request);
+        }
+
+        public BookingStatusResponse GetBookingStatus(BookingStatusRequest request)
+        {
+            var dbAccess = new DbAccess();
+
+            return dbAccess.GetBookingStatus(request);
         }
 
         public BookingResponse Push(BookingRequest request)
